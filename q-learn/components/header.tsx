@@ -5,8 +5,8 @@ import { ClientOnly } from "./client-only"
 import { Input } from "./input"
 
 export const Header = () => {
-    return(
-        <ClientOnly>
+  return(
+    <ClientOnly>
       <div className=" relative w-full h-full bg-gradient-to-r from-purple-300 to-purple-50 flex items-start flex-col justify-center">
         <div className="pl-44 flex flex-row"> 
           <div>
@@ -65,5 +65,5 @@ export const Header = () => {
         </nav>
       </div>
     </ClientOnly>
-    )
+  )
 }

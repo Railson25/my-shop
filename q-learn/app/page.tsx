@@ -3,6 +3,7 @@ import { ClientOnly } from "@/components/client-only";
 import { Course } from "@/components/course";
 import { Header } from "@/components/header";
 import { Teachers } from "@/components/teachers";
+import { Testimonials } from "@/components/testimonials";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Categories />
       <Teachers />
       <Course />
+      <Testimonials />
     </ClientOnly>
     </>
   )

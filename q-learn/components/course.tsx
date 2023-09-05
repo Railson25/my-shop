@@ -2,13 +2,15 @@
 
 import { Button } from "./button"
 import { CardCourse } from "./card-course"
+import { SectionTitle } from "./section-title"
 
 export const Course = () => {
     return(
         <div className="w-full py-28 flex items-center flex-col">
-            <h2 className="text-[60px] font-bold leading-[75px] text-[#07152F;]">Our Popular Course</h2>
-            <p className="w-[708px] text-[22px] leading-[33px] font-medium text-center mt-[18px]">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been th </p>
-
+            <SectionTitle 
+                title="Our Popular Course"
+                description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been th"
+            />
             <div className="gap-x-[63px] gap-y-[57px] grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
                 <CardCourse 
                     title="Web Design  Basic to advance"

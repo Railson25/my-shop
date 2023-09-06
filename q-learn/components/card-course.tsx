@@ -18,6 +18,7 @@ export const CardCourse = ({note, rating, src, title, price}: CardCourseProps) =
     return(
         <div className="w-[419px] h-[505px] rounded-3xl shadow-lg flex items-center flex-col relative mt-[77px]">
             <Image 
+                className="object-cover max-h-[250px] rounded-t-[24px]"
                 src={src}
                 alt="Course image"
                 width={419}

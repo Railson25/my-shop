@@ -13,7 +13,7 @@ export const TestimonialsCard = ({description, title, role, src}: TestimonialsCa
         <div className="group w-[500px] h-[383px] rounded-[20px shadow-md px-6 pt-8 pb-[73px] rounded-[20px] hover:bg-[#7253A4] hover:text-white">
             <div className="flex gap-x-3">
                 <Image 
-                    className="border-[2px] object-cover rounded-full border-[#7253A4] group-hover:bg-white"
+                    className="border-[2px] object-cover max-w-[61px] max-h-[61px] rounded-full border-[#7253A4] group-hover:border-white"
                     alt="Student Image"
                     src={src}
                     width={61}

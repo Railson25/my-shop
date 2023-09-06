@@ -3,7 +3,7 @@ import { TestimonialsCard } from "./testimonials-card"
 
 export const Testimonials = () => {
     return(
-        <div className="w-full py-28 flex flex-col items-center">
+        <div className="w-full pb-28 flex flex-col items-center">
             <SectionTitle
                 title="What our students say"
                 description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been th "

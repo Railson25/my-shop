@@ -37,7 +37,7 @@ export const Course = () => {
                     title="App Design  Basic to advance"
                     note="5.0"
                     rating="2rating"
-                    src="/images/course-image-four.png"
+                    src="/images/course-image-four.jpg"
                     price={90}
                 />
                 <CardCourse 

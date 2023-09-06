@@ -7,13 +7,13 @@ import { Input } from "./input"
 export const Header = () => {
   return(
     <ClientOnly>
-      <div className=" relative w-full h-full bg-gradient-to-r from-purple-300 to-purple-50 flex items-start flex-col justify-center">
+      <div className=" relative w-full h-full bg-gradient-to-r from-[#d6bdff] to-[#f4effd]  flex items-start flex-col justify-center">
         <div className="pl-44 flex flex-row"> 
           <div>
-            <h1 className="font-bold text-6xl text-black leading-[120%] max-w-[855px]">
+            <h1 className="font-bold text-6xl text-[#07152F] leading-[120%] max-w-[855px]">
               Embark on a Delightful Journey of Growth with 
             </h1>
-            <span className="font-bold text-6xl text-purple-600">
+            <span className="font-bold text-6xl text-[#7253a4]">
                 Online learning
               </span>
             <p className="mt-7 mb-10 text-1xl font-medium max-w-[786px]">
@@ -21,7 +21,7 @@ export const Header = () => {
             </p>
             <Input />
           </div>
-          <div className="absolute right-40 top-40 bg-purple-600 rounded-full">
+          <div className="absolute right-40 top-40 bg-[#7253a4] rounded-full">
               <Image 
                 className="rounded-full"
                 src='/images/header-image.png'

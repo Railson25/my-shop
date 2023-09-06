@@ -1,6 +1,7 @@
 import { Categories } from "@/components/categories";
 import { ClientOnly } from "@/components/client-only";
 import { Course } from "@/components/course";
+import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Teachers } from "@/components/teachers";
 import { Testimonials } from "@/components/testimonials";
@@ -14,6 +15,7 @@ export default function Home() {
       <Teachers />
       <Course />
       <Testimonials />
+      <Footer />
     </ClientOnly>
     </>
   )

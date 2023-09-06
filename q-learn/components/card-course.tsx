@@ -2,9 +2,7 @@
 
 import Image from "next/image"
 import { Button } from "./button"
-import {AiFillStar, AiOutlineStar} from 'react-icons/ai'
-import { useEffect, useState } from "react"
-import { IconType } from "react-icons"
+import { Stars } from "./stars"
 
 interface CardCourseProps{
     title: string
@@ -15,13 +13,7 @@ interface CardCourseProps{
 }
 
 export const CardCourse = ({note, rating, src, title, price}: CardCourseProps) => {
-    const [activeStar, setActiveStar] = useState(false)
 
-    const toggleStarButton = () => {
-        if(activeStar){
-            setActiveStar(true)
-        }
-    }
      
     return(
         <div className="w-[419px] h-[505px] rounded-3xl shadow-lg flex items-center flex-col relative mt-[77px]">
@@ -40,17 +32,7 @@ export const CardCourse = ({note, rating, src, title, price}: CardCourseProps) =
                 </p>
             </div>
             <div className="flex items-center w-[333px]">
-                <div 
-                    onClick={toggleStarButton}
-                    className="cursor-pointer flex"
-                >
-                    {activeStar ? <AiOutlineStar  size={30} className='cursor-pointer'/> : <AiFillStar className="text-yellow-400" size={30} />}
-                    {activeStar ? <AiOutlineStar  size={30} className='cursor-pointer'/> : <AiFillStar className="text-yellow-400" size={30} />}
-                    {activeStar ? <AiOutlineStar  size={30} className='cursor-pointer'/> : <AiFillStar className="text-yellow-400" size={30} />}
-                    {activeStar ? <AiOutlineStar  size={30} className='cursor-pointer'/> : <AiFillStar className="text-yellow-400" size={30} />}
-                    {!activeStar ? <AiOutlineStar  size={30} className='cursor-pointer'/> : <AiFillStar className="text-yellow-400" size={30} />}
-                    
-                </div>
+                <Stars />
                 <p className="pl-8 pr-2">
                     {note}
                 </p>

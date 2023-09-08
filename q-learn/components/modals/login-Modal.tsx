@@ -4,10 +4,10 @@
 import { useState } from "react"
 import { useLoginModal } from "@/hooks/userLoginModal"
 import { Modal } from "./Modal"
-import { Heading } from "./Heading"
-import { Input } from "./input"
+import { Heading } from "../Heading"
+import { Input } from "../input"
 import { FieldValues, useForm } from "react-hook-form"
-import { Button } from "./button"
+import { Button } from "../button"
 import {AiFillGithub} from 'react-icons/ai'
 import {FcGoogle} from 'react-icons/fc'
 

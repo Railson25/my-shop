@@ -1,10 +1,16 @@
 "use client"
 
-import Image from "next/image"
+
+import { useLoginModal } from "@/hooks/userLoginModal"
 import { Button } from "./button"
 import { Logo } from "./logo"
+import { useRegisterModal } from "@/hooks/userRegisterModal"
 
 export const Navbar = () => {
+
+    const loginModal = useLoginModal()
+    const registerModal = useRegisterModal()
+
     return(
         <div className="h-20 bg-white w-full text-neutral-700 py-5 flex flex-row justify-around">
             <Logo />
@@ -26,13 +32,13 @@ export const Navbar = () => {
                 <Button 
                     label="Sign up"
                     outline
-                    onClick={() =>{}}
-                    className="hover:bg-[#7253A4] hover:text-white"
+                    onClick={registerModal.onOpen}
+                    className="hover:bg-[#7253A4] hover:text-white w-[153px]"
                 />
                 <Button 
                     label="Log in"
-                    onClick={() =>{}}
-                    className="hover:text-[#7253A4] hover:bg-white"
+                    onClick={loginModal.onOpen}
+                    className="hover:text-[#7253A4] hover:border-[#7253A4] hover:bg-white w-[153px]"
                 />
             </div>
         </div>

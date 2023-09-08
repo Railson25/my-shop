@@ -1,16 +1,15 @@
 "use client"
 
-import { Modal } from "@/components/Modal"
-import { LoginModal } from "@/components/loginModal"
-
-
+import { LoginModal } from "@/components/modals/login-Modal"
+import { RegisterModal } from "@/components/modals/register-Modal"
 
 export const ModalProvider = () => {
 
 
     return(
         <>
-            <LoginModal/>
+            <LoginModal />
+            <RegisterModal />
         </>
     )
 }

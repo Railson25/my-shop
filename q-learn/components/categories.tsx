@@ -15,22 +15,22 @@ export const Categories = () => {
                 
                 <div className="flex flex-row mt-14 px-40 gap-x-7 ">
                     <CardCategory 
-                        src="/images/web-design.svg"
+                        src="design"
                         label="Web Design"
                         description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem"
                     />
                     <CardCategory 
-                        src="/images/web-development.svg"
+                        src="web"
                         label="Web Development"
                         description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem"
                     />
                     <CardCategory 
-                        src="/images/marketing.svg"
+                        src="marketing"
                         label="Marketing"
                         description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem"
                     />
                     <CardCategory 
-                        src="/images/data-entry.svg"
+                        src="data"
                         label="Data Entry"
                         description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem"
                     />

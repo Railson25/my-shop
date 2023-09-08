@@ -1,4 +1,7 @@
+"use client"
+
 import Image from "next/image"
+
 import { Stars } from "./stars"
 
 interface TestimonialsCardProps{
@@ -9,6 +12,7 @@ interface TestimonialsCardProps{
 }
 
 export const TestimonialsCard = ({description, title, role, src}: TestimonialsCardProps) => {
+        
     return(
         <div className="group w-[500px] h-[383px] rounded-[20px shadow-md px-6 pt-8 pb-[73px] rounded-[20px] hover:bg-[#7253A4] hover:text-white">
             <div className="flex gap-x-3">
@@ -31,7 +35,7 @@ export const TestimonialsCard = ({description, title, role, src}: TestimonialsCa
             <p className="my-[30px] text-[22px] text-[#6A6B6C] font-normal leading-[33px] group-hover:text-white">
                 {description}
             </p>
-            <Stars />    
+              <Stars />
         </div>
     )
 }

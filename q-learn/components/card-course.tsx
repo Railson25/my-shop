@@ -2,19 +2,18 @@
 
 import Image from "next/image"
 import { Button } from "./button"
+
+
 import { Stars } from "./stars"
 
 interface CardCourseProps{
     title: string
-    rating: string
-    note: string
     src: string
     price: number
 }
 
-export const CardCourse = ({note, rating, src, title, price}: CardCourseProps) => {
+export const CardCourse = ({src, title, price}: CardCourseProps) => {
 
-     
     return(
         <div className="w-[419px] h-[505px] rounded-3xl shadow-lg flex items-center flex-col relative mt-[77px]">
             <Image 
@@ -33,11 +32,9 @@ export const CardCourse = ({note, rating, src, title, price}: CardCourseProps) =
                 </p>
             </div>
             <div className="flex items-center w-[333px]">
-                <Stars />
-                <p className="pl-8 pr-2">
-                    {note}
-                </p>
-                <p>({rating})</p>
+                <Stars 
+                    isActiveStar
+                />
             </div>
             <Button 
                 onClick={() => {}}

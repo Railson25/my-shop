@@ -1,6 +1,5 @@
 'use client'
 
-import Image from "next/image"
 import { SearchIncon } from "./icons/search-icon"
 
 export const HeaderInput = () => {

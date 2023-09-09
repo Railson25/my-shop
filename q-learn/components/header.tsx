@@ -18,7 +18,7 @@ export const Header = () => {
                 Online learning
               </span>
             <p className="mt-7 mb-10 text-1xl font-medium max-w-[786px]">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text  
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text  
             </p>
             <HeaderInput />
           </div>

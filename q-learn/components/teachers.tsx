@@ -9,7 +9,7 @@ export const Teachers = () => {
     return(
         <ClientOnly>
             <div className="group w-full py-56 px-40 group bg-gradient-to-r from-[#d6bdff] to-[#f4effd] flex gap-x-[356px] items-center">
-                <div className="flex items-center bg-transparent">
+                <div className="flex items-center">
                     <Image 
                         className="rounded-full object-cover w-[519px] h-[519px]"
                         src='/images/teacher-image-one.jpg'

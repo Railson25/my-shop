@@ -3,6 +3,7 @@
 import {IoMdClose} from 'react-icons/io'
 import { Button } from '../button'
 import { useCallback, useEffect, useState } from 'react'
+import { useRegisterModal } from '@/hooks/userRegisterModal'
 
 interface ModalProps {
     isOpen: boolean
@@ -13,18 +14,17 @@ interface ModalProps {
     footer?: React.ReactElement
     actionLabel?: string
     disabled?: boolean
-    secondaryAction?: () => void
-    secondaryActionLabel?: string
    
 }
 
 export const Modal = ({
     actionLabel, isOpen, onClose, onSubmit, body, disabled, 
-    footer, secondaryAction,secondaryActionLabel, title,
+    footer, title,
 
 }: ModalProps) => {
     
     const [showModal, setShowModal] = useState(isOpen)
+    const registerMOdal = useRegisterModal()
 
     useEffect(() => {
         setShowModal(isOpen)
@@ -46,13 +46,6 @@ export const Modal = ({
         }
         onSubmit()
     }, [disabled, onSubmit])
-
-    const handleSecondaryAction = useCallback(() => {
-        if(disabled || !secondaryAction){
-            return
-        }
-        secondaryAction()
-    }, [disabled, secondaryAction])
 
 
     if(!isOpen){
@@ -80,21 +73,22 @@ export const Modal = ({
                                 {body}
                             </div>     
                             <div className="flex flex-col gap-2 p-6">
-                                <div className="flex flex-row items-center gap-4 w-full">
-                                    {secondaryAction && secondaryActionLabel && ( 
-                                    <Button 
-                                        
-                                        label={secondaryActionLabel}
-                                        disabled={disabled}
-                                        onClick={handleSecondaryAction}
-                                    />
-                                    )}
-                                    <Button  
-                                        label='Login'
-                                        disabled={disabled}
-                                        onClick={handleSubmit}
-                                    />
-                                </div>
+                               
+                                    {registerMOdal.isOpen 
+                                        ?  
+                                        <Button 
+                                            label="Register"
+                                            disabled={disabled}
+                                            onClick={handleSubmit}
+                                        />
+                                        :
+                                        <Button  
+                                            label='Login'
+                                            disabled={disabled}
+                                            onClick={handleSubmit}
+                                        />
+                                    }
+                                
                                 {footer}
                             </div>               
                         </div>

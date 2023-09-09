@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { Modal } from "./Modal"
 import { Button } from "../button"
 import {AiFillGithub} from 'react-icons/ai'
@@ -9,6 +9,7 @@ import { Heading } from "../Heading"
 import { Input } from "../input"
 import { FieldValues, useForm } from "react-hook-form"
 import { useRegisterModal } from "@/hooks/userRegisterModal"
+import { useLoginModal } from "@/hooks/userLoginModal"
 
 export const RegisterModal = () => {
     const [loading, setLoading] = useState(false)
@@ -22,9 +23,15 @@ export const RegisterModal = () => {
     })
 
     const registerModal = useRegisterModal()
+    const loginModal = useLoginModal()
+
+    const toggle = useCallback(() => {
+        registerModal.onClose()
+        loginModal.onOpen()
+    }, [loginModal, registerModal])
 
     const bodyContent = (
-        <div className='flex flex-col gap-4 text-gray-600'>
+        <div className='flex flex-col gap-4 text-[#7253A4]'>
                 <Heading 
                     title='Welcome to QLearn'
                     subtitle='Create an account'
@@ -78,7 +85,7 @@ export const RegisterModal = () => {
                 <div className=' justify-center flex flex-row items-center gap-4'>
                     <div>Already have an account?</div>
                     <div
-                        onClick={() => {}}
+                        onClick={toggle}
                         className='text-black font-bold cursor-pointer hover:underline'
                     >
                         Log in

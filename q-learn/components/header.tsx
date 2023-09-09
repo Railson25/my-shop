@@ -2,7 +2,8 @@
 
 import Image from "next/image"
 import { ClientOnly } from "./client-only"
-import { Input } from "./input"
+
+import { HeaderInput } from "./header-input"
 
 export const Header = () => {
   return(
@@ -17,9 +18,9 @@ export const Header = () => {
                 Online learning
               </span>
             <p className="mt-7 mb-10 text-1xl font-medium max-w-[786px]">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text  
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text  
             </p>
-            <Input />
+            <HeaderInput />
           </div>
           <div className="absolute right-40 top-40 bg-[#7253a4] rounded-full">
               <Image 

@@ -1,7 +1,7 @@
 'use client'
 
 
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { useLoginModal } from "@/hooks/userLoginModal"
 import { Modal } from "./Modal"
 import { Heading } from "../Heading"
@@ -10,16 +10,14 @@ import { FieldValues, useForm } from "react-hook-form"
 import { Button } from "../button"
 import {AiFillGithub} from 'react-icons/ai'
 import {FcGoogle} from 'react-icons/fc'
+import { useRegisterModal } from "@/hooks/userRegisterModal"
 
 export const LoginModal = () => {
     const [loading, setLoading] = useState(false)
-    const {isOpen, onClose} = useLoginModal()
+    const loginModal = useLoginModal()
+    const registerModal = useRegisterModal()
 
-    const onChange = (open: boolean) => {
-        if(!open){
-            onClose()
-        }
-    }
+
 
     const {register, handleSubmit, formState: {errors}} = useForm<FieldValues>({
         defaultValues: {
@@ -27,6 +25,13 @@ export const LoginModal = () => {
             password: ''
         }
     })
+
+
+    const toggle = useCallback(() => {
+        loginModal.onClose()
+        registerModal.onOpen()
+    }, [loginModal, registerModal])
+
 
     const bodyContent = (
         <div className="flex flex-col gap-4 text-[#7253A4]">
@@ -71,7 +76,7 @@ export const LoginModal = () => {
                 <div className=' justify-center flex flex-row items-center gap-6'>
                     <div>First time using QLearn?</div>
                     <div
-                        onClick={() => {}}
+                        onClick={toggle}
                         className='text-black font-bold cursor-pointer hover:underline'
                     >
                         Create an account
@@ -81,11 +86,12 @@ export const LoginModal = () => {
         </div>
     )    
 
+    
     return(
         <Modal
             onSubmit={() => {}}
-            isOpen={isOpen}
-            onClose={onClose}
+            isOpen={loginModal.isOpen}
+            onClose={loginModal.onClose}
             title="Login"
             body={bodyContent}
             footer={footerContent}

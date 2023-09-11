@@ -8,10 +8,10 @@ interface LogoProps{
 export const Logo = ({className}: LogoProps) => {
     return(
         <div className="flex items-center gap-x-3 hover:opacity-80">
-            <RiGraduationCapFill className={twMerge("text-[#7253A4]", className)} size={55} />
-            <span className={twMerge("font-bold text-3xl text-[#7253A4]", className)}>
+            <RiGraduationCapFill className={twMerge("text-[#7253A4] w-[30px] h-[30px] md:w-[44px] sm:h-[44px]", className)} />
+            <span className={twMerge("font-bold text-[15px] leading-4 text-[#7253A4] sm:text-2xl ", className)}>
                 QLearn
-            </span>
+            </span> 
         </div>
     )
 }

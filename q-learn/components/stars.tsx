@@ -27,14 +27,14 @@ export const Stars = ({isActiveStar}: StarProps) => {
                             key={value}
                             onClick={() => toggleStarButton(value)}
                             >
-                                <AiFillStar size={30} className='text-yellow-400' />
+                                <AiFillStar className='text-yellow-400 w-5 h-5 sm:w-7 sm:h-7  ' />
                             </span>
                         :   
                             <span
                             key={value}
                             onClick={() => toggleStarButton(value)}
                             >
-                                 <AiOutlineStar size={30} /> 
+                                 <AiOutlineStar className='sm:w-7 sm:h-7 w-5 h-5' /> 
                             </span>
                     }
                     
@@ -43,7 +43,7 @@ export const Stars = ({isActiveStar}: StarProps) => {
 
             {isActiveStar && (
                 <>
-                    <p className="pl-8 pr-2">
+                    <p className="pl-4 sm:pl-8 pr-2">
                         {activeStar}.0
                     </p>
                     <p> 

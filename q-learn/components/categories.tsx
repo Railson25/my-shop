@@ -7,13 +7,13 @@ import { SectionTitle } from "./section-title"
 export const Categories = () => {
     return(
         <ClientOnly>
-            <div className="w-full flex flex-col items-center justify-center py-28" >
+            <div className="w-full flex flex-col items-center py-16 justify-center xl:py-28  lg:py-22 md:py-18" >
                 <SectionTitle 
                     title="Popular Categories"
                     description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been th"
                 />
                 
-                <div className="flex flex-row mt-14 px-40 gap-x-7 ">
+                <div className="mt-14  gap-x-7 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
                     <CardCategory 
                         src="design"
                         label="Web Design"

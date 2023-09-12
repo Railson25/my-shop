@@ -30,7 +30,7 @@ export const CardCategory = ({label, description, src}: CardCategoryProps) => {
     let Icon = IconsBySrc[src?? DEFAULT_ICON]
 
     return(
-        <div className="group w-96 h-64 px-11 rounded-[20px] shadow bg-opacity-10  hover:bg-[#7253a4] hover:text-white flex flex-col text-center items-center">
+        <div className="group w-80  h-64 px-4 xl-px-11 rounded-[20px] shadow bg-opacity-10  hover:bg-[#7253a4] hover:text-white flex flex-col text-center items-center">
             <div className="p-5 w-[71px] rounded-full mb-3 mt-3 bg-[#7253a4] fill-white  group-hover:bg-white group-hover:fill-[#7253a4]">
                 <Icon />
             </div>

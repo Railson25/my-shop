@@ -10,7 +10,7 @@ export const Navbar = () => {
 
 
     return(
-        <div className="flex items-center justify-between bg-[#e3e6f3] px-20 py-5">
+        <div className="flex items-center justify-between bg-[#d6daec] px-20 py-5 sticky top-0 left-0 z-[999] shadow-lg">
             <Link
                 href="/"
                 className="w-12 h-10 "

@@ -1,7 +1,11 @@
-
+import { Feature } from "@/components/feature";
+import { Header } from "@/components/header";
 
 export default function Home() {
   return (
-    <div>SDFGsdf</div>
+    <div>
+      <Header />
+      <Feature />
+    </div>
   )
 }

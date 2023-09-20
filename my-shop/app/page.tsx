@@ -6,10 +6,11 @@ import { FeatureProducts } from "@/components/feature-prudcts";
 import { Header } from "@/components/header";
 import { Information } from "@/components/information";
 import { InformationCard } from "@/components/information-card";
+import { Newsletter } from "@/components/newsletter";
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-white">
       <Header />
       <Feature />
       <FeatureProducts 
@@ -170,6 +171,7 @@ export default function Home() {
             className="bg-[url('/images/banner/b18.jpg')] min-w-[30%] h-[30vh] p-5 mb-5"
         />
       </Information>
+      <Newsletter />
     </div>
   )
 }

@@ -10,9 +10,10 @@ interface LinkProps {
     src: string
     icon?: IconType
     className?: string
+    footer?: boolean
 }
 
-export const LinkItem = ({active, label, src, icon:Icon, className}: LinkProps) => {
+export const LinkItem = ({active, label, src, icon:Icon,footer, className}: LinkProps) => {
     return(
         <Link 
             href={src}
@@ -22,7 +23,12 @@ export const LinkItem = ({active, label, src, icon:Icon, className}: LinkProps) 
                     ${active  
                         ? "after:w-[30%] after:h-[2px] after:bg-[#088175] after:absolute after:-bottom-1 after:left-1" 
                         : "" 
-                    }`, className
+                    }
+                    ${footer ? 'text-[13px]' : ''}
+                    ${footer ? 'm-0' : ''}
+                    ${footer ? 'mb-[10px]' : ''}
+                    ${footer ? 'text-[#222]' : ''}
+                    `, className
                 )
             }  
         > 
@@ -35,3 +41,4 @@ export const LinkItem = ({active, label, src, icon:Icon, className}: LinkProps) 
         </Link>
     )
 }
+

@@ -1,8 +1,11 @@
 import { Banner } from "@/components/banner";
+import { Button } from "@/components/button";
 import { Feature } from "@/components/feature";
 import { FeatureProductCard } from "@/components/feature-product-card";
 import { FeatureProducts } from "@/components/feature-prudcts";
 import { Header } from "@/components/header";
+import { Information } from "@/components/information";
+import { InformationCard } from "@/components/information-card";
 
 export default function Home() {
   return (
@@ -62,7 +65,9 @@ export default function Home() {
                     price="$78"
                 />
       </FeatureProducts>
+
       <Banner />
+      
       <FeatureProducts 
         title="New Arrivals"
         subtitle="Summer Collection New Modern Design"
@@ -116,6 +121,55 @@ export default function Home() {
                     price="$78"
                 />
       </FeatureProducts>
+
+      <Information
+        className="justify-center gap-x-3 gap-y-3"
+      >
+      <InformationCard
+                title="crazy deals"
+                subtitle="buy 1 get 1 free"
+                description="The best classic dress is on sale at Less"
+            >
+                <Button 
+                    label="Learn more"
+                    banner
+                />
+            </InformationCard>
+            <InformationCard
+                title="spring/summer"
+                subtitle="upcoming season "
+                description="The best classic dress is on sale at Less"
+                className="bg-[url('/images/banner/b10.jpg')]"
+            >
+                <Button 
+                    label="Collection"
+                    banner
+                />
+            </InformationCard>
+      </Information>
+
+      <Information
+        className="py-0"
+      >
+      <InformationCard
+            subtitle="SEASONAL SALE "
+            sell="Winter Collection -50% OFF"
+            small
+            className="bg-[url('/images/banner/b7.jpg')] min-w-[30%] h-[30vh] p-5 mb-5"
+        />
+      <InformationCard
+            subtitle="SEASONAL SALE "
+            sell="Winter Collection -50% OFF"
+            small
+            className="bg-[url('/images/banner/b4.jpg')] min-w-[30%] h-[30vh] p-5 mb-5"
+        />
+      <InformationCard
+            subtitle="SEASONAL SALE "
+            sell="Winter Collection -50% OFF"
+            small
+            className="bg-[url('/images/banner/b18.jpg')] min-w-[30%] h-[30vh] p-5 mb-5"
+        />
+      </Information>
     </div>
   )
 }

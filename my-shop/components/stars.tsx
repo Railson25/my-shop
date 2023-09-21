@@ -1,7 +1,7 @@
 'use client'
 
 import {AiFillStar, AiOutlineStar} from 'react-icons/ai'
-import { useState } from "react"
+import React, { useState } from "react"
 
 interface StarProps{
     isActiveStar?: boolean
@@ -20,25 +20,21 @@ export const Stars = ({isActiveStar}: StarProps) => {
             className="cursor-pointer flex"
         >
             {[1, 2, 3, 4, 5].map((value) => (
-                <>
-                    {  value <= activeStar
-                        ?   
-                            <span
-                            key={value}
-                            onClick={() => toggleStarButton(value)}
-                            >
-                                <AiFillStar className='text-yellow-400 w-5 h-5' />
-                            </span>
-                        :   
-                            <span
-                            key={value}
-                            onClick={() => toggleStarButton(value)}
-                            >
-                                 <AiOutlineStar className='w-5 h-5 text-neutral-800' /> 
-                            </span>
-                    }
-                    
-                </>
+                 value <= activeStar
+                    ?   
+                        <span
+                        key={value}
+                        onClick={() => toggleStarButton(value)}
+                        >
+                            <AiFillStar className='text-yellow-400 w-5 h-5' />
+                        </span>
+                    :   
+                        <span
+                        key={value}
+                        onClick={() => toggleStarButton(value)}
+                        >
+                                <AiOutlineStar className='w-5 h-5 text-neutral-800' /> 
+                        </span>
             ))}
 
             {isActiveStar && (

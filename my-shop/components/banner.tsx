@@ -4,7 +4,7 @@ import { Button } from "./button";
 
 export const Banner = () => {
   return (
-    <div className="bg-[url('/images/banner/b2.jpg')] py-10 mx-0 flex flex-col justify-center items-center text-center w-full h-[40vh] bg-cover bg-center pt-10px">
+    <div className="bg-[url('/images/banner/b2.jpg')] py-10 mx-0 flex flex-col justify-center items-center text-center w-full h-[40vh] max-md:h-[20vh] bg-cover bg-center pt-10px">
       <h4 className="text-white text-base">Repair Services</h4>
       <h2 className="text-white text-[30px] py-[10px]">
         Up to

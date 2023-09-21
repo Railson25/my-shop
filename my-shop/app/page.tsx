@@ -4,7 +4,7 @@ import { Banner } from "@/components/banner";
 import { Button } from "@/components/button";
 import { Feature } from "@/components/feature";
 import { FeatureProductCard } from "@/components/feature-product-card";
-import { FeatureProducts } from "@/components/feature-prudcts";
+import { FeatureProducts } from "@/components/feature-products";
 
 import { Header } from "@/components/header";
 

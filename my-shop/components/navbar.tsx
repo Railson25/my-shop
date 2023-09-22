@@ -23,7 +23,7 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="flex items-center justify-between bg-[#d6daec] px-20 py-5 sticky top-0 left-0 z-[999] shadow-lg">
+    <div className="flex items-center justify-between bg-[#d6daec] px-20 py-5 sticky top-0 left-0 z-[999] shadow-lg max-[477px]:py-[10px] max-[477px]:px-[30px]">
       <Link href="/" className="w-12 h-10 ">
         <LogoIcon />
       </Link>

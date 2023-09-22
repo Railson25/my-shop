@@ -24,7 +24,7 @@ export const InformationCard = ({
   return (
     <div
       className={twMerge(
-        `group flex flex-col justify-center items-start  min-w-[580px] h-[50vh] bg-cover bg-no-repeat bg-center p-[30px] bg-[url('/images/banner/b17.jpg')]  max-md:min-w-full max-md:h-[30vh]
+        `group flex flex-col justify-center items-start  min-w-[580px] h-[50vh] bg-cover bg-no-repeat bg-center p-[30px] bg-[url('/images/banner/b17.jpg')]  max-md:min-w-full max-md:h-[30vh] 
     
         `,
         className

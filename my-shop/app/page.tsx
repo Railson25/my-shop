@@ -17,7 +17,7 @@ import React from "react";
 
 export default function Home() {
   return (
-    <div className="bt-[20%] bl-[30%]">
+    <div>
       <Header />
 
       <Feature />

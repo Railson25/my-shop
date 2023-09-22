@@ -6,7 +6,9 @@ interface FooterProps {
 
 export const Footer = ({ children }: FooterProps) => {
   return (
-    <div className="py-10 px-20 flex flex-wrap justify-between">{children}</div>
+    <div className="py-10 px-20 flex flex-wrap justify-between max-[477px]:p-[20px]">
+      {children}
+    </div>
   );
 };
 
@@ -65,13 +67,15 @@ interface FooterRowProps {
 
 export const FooterRow = ({ children }: FooterRowProps) => {
   return (
-    <div className="flex gap-x-1 mt-[10px] mx-0 mb-[15px]">{children}</div>
+    <div className="flex gap-x-1 mt-[10px] mx-0 mb-[15px] max-[477px]:flex-col max-[477px]:gap-y-1">
+      {children}
+    </div>
   );
 };
 
 export const FooterCopyright = () => {
   return (
-    <div className="w-full text-center">
+    <div className="w-full text-center max-[477px]:text-start">
       <FooterParagraph text=" 2023. Railson Santiago - NextJs Ecommerce Template" />
     </div>
   );

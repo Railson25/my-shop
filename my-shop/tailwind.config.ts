@@ -15,7 +15,8 @@ const config: Config = {
       },
       backgroundPosition: {
         positionLarge: 'top 25% right 0',
-        positionMobile: 'top 30% right 30%',
+        positionIpad: 'top 30% right 30%',
+        positionMobile: '55%',
       }
     },
   },

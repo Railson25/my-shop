@@ -12,7 +12,7 @@ export const FeatureProducts = ({
   children,
 }: FeatureProductsProps) => {
   return (
-    <div className="py-10 px-20 text-center bg-white">
+    <div className="py-10 px-20 text-center bg-white max-[477px]:p-[20px]">
       <h1>{title}</h1>
       <p>{subtitle}</p>
 

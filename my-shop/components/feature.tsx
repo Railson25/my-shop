@@ -4,7 +4,7 @@ import { FeatureCard } from "./feature-card";
 
 export const Feature = () => {
   return (
-    <div className="py-10 px-20 bg-white flex items-center justify-between flex-wrap max-md:justify-center max-md:gap-x-[15px] max-md:px-10">
+    <div className="py-10 px-20 bg-white flex items-center justify-between flex-wrap max-md:justify-center max-md:gap-x-[15px] max-md:px-10 max-[477px]:p-[20px]">
       <FeatureCard src="/images/f1.png" label="Free Shipping" />
       <FeatureCard
         className="bg-[#cdebbc]"

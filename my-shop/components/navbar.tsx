@@ -11,8 +11,32 @@ import { LogoIcon } from "./icon/logo";
 import { LinkItem } from "./link";
 import { useState } from "react";
 
+const menuItems = [
+  {
+    src: "/",
+    label: "Home",
+  },
+  {
+    src: "/shop",
+    label: "Shop",
+  },
+  {
+    src: "/",
+    label: "Blog",
+  },
+  {
+    src: "/",
+    label: "About",
+  },
+  {
+    src: "/",
+    label: "Contact",
+  },
+];
+
 export const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
+  const [currentActive, setCurrentActive] = useState("");
 
   const toggleOpen = () => {
     setShowNavbar(true);
@@ -34,11 +58,21 @@ export const Navbar = () => {
                 ${!showNavbar ? "max-md:right-[-300px]" : "max-md:right-0"}
             `}
         >
-          <LinkItem src="/" label="Home" active />
-          <LinkItem src="/" label="Shop" />
-          <LinkItem src="/" label="Blog" />
-          <LinkItem src="/" label="About" />
-          <LinkItem src="/" label="Contact" />
+          {menuItems.map((item) => (
+            <LinkItem
+              key={item.label}
+              src={item.src}
+              label={item.label}
+              active={currentActive === item.label}
+              onClick={() => setCurrentActive(item.label)}
+            />
+          ))}
+          {/* <LinkItem
+            src="/shop"
+            label="Shop"
+            active={currentActive === "shop"}
+            onClick={() => setCurrentActive("shop")}
+          /> */}
 
           <LinkItem
             src="/"

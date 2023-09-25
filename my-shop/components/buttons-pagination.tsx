@@ -1,23 +1,50 @@
 "use client";
 
-import { LinkItem } from "./link";
-
-import { BsArrowRight } from "react-icons/bs";
+import React from "react";
+import { Button } from "./button";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
 interface ButtonsPaginationProps {
-  children: React.ReactNode;
-  onClick: () => void;
+  onNext: () => void;
+  onPrev: () => void;
+  onPage?: (pageNumber: number) => void;
+  pageNumber: number;
+  maxPage: number;
+  goToInitialPage: () => void;
+  goToLastPage: () => void;
 }
 
 export const ButtonsPagination = ({
-  children,
-  onClick,
+  onPrev,
+  onNext,
+  onPage,
+  pageNumber,
+  maxPage,
+  goToInitialPage,
+  goToLastPage,
 }: ButtonsPaginationProps) => {
   return (
     <div className="py-10 px-20 flex text-center justify-center gap-x-2 ">
-      <LinkItem src="/" label="1" pagination onClick={onClick} />
-      <LinkItem src="/" label="2" pagination onClick={onClick} />
-      <LinkItem src="/" icon={BsArrowRight} pagination onClick={onClick} />
+      {pageNumber !== 1 ? (
+        <Button pagination icon={BsArrowLeft} onClick={onPrev} />
+      ) : (
+        <></>
+      )}
+      <Button pagination onClick={goToInitialPage} outline>
+        {pageNumber}
+      </Button>
+
+      <Button pagination onClick={() => onPage?.(pageNumber)}>
+        {pageNumber !== maxPage ? pageNumber + 1 : pageNumber}
+      </Button>
+
+      <span className="flex items-end px-5">...</span>
+
+      <Button pagination onClick={goToLastPage}>
+        {pageNumber !== maxPage ? pageNumber + 1 : pageNumber}
+      </Button>
+
+      <Button pagination icon={BsArrowRight} onClick={onNext} />
     </div>
   );
 };

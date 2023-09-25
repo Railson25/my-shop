@@ -1,5 +1,8 @@
 import { Header } from "@/components/header";
 
+import React from "react";
+import { Pagination } from "@/components/pagination";
+
 const Shop = () => {
   return (
     <div>
@@ -10,6 +13,8 @@ const Shop = () => {
         pStyle="text-white"
         className="bg-[url('/images/banner/b1.jpg')]  h-[40vh] items-center p-[14px] "
       />
+
+      <Pagination />
     </div>
   );
 };

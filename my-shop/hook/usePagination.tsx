@@ -1,4 +1,16 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+
+interface UsePaginationResult<T> {
+  currentPage: number;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
+  maxPage: number;
+  currentData: () => T[];
+  nextPage: () => void;
+  backPage: () => void;
+  goToPage: (pageNumber: number) => void;
+  goToInitialPage: () => void;
+  goToLastPage: () => void;
+}
 
 export function usePagination<T>(data: T[], itemPerPage: number) {
   const [currentPage, setCurrentPage] = useState(1);

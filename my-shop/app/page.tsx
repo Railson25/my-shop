@@ -18,7 +18,15 @@ import React from "react";
 export default function Home() {
   return (
     <div>
-      <Header />
+      <Header
+        title="Trade-in-offer"
+        subtitle="Super value deals"
+        description="On all products"
+        paragraph="Save more with coupons $ up to 70% off!"
+        textButton="Shop Now"
+        isHeader
+        hasButton
+      />
 
       <Feature />
 

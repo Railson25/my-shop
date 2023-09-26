@@ -1,4 +1,4 @@
-interface Product {
+export interface Product {
   src: string;
   brand: string;
   name: string;
@@ -107,7 +107,7 @@ const productsArrivals: Product[] = [
   },
 ];
 
-interface CategoriesType {
+export interface CategoriesType {
   name: string;
   products: Product[];
   title: string;

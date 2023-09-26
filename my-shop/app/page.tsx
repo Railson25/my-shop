@@ -13,9 +13,11 @@ import { InformationCard } from "@/components/information-card";
 
 import { Newsletter } from "@/components/newsletter";
 import { categories } from "@/mock/product";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div>
       <Header
@@ -33,13 +35,14 @@ export default function Home() {
       {categories.map((category, index) => (
         <React.Fragment key={category.name}>
           <FeatureProducts title={category.title} subtitle={category.subtitle}>
-            {category.products.map((product, index) => (
+            {category.products.map((product) => (
               <FeatureProductCard
-                key={index}
+                key={product.id}
                 src={product.src}
                 brand={product.brand}
                 name={product.name}
                 price={product.price}
+                onclick={() => router.push(`/shop/product/${product.id}`)}
               />
             ))}
           </FeatureProducts>

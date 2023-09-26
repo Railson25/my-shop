@@ -22,7 +22,7 @@ export const Pagination: React.FC = () => {
     maxPage,
     goToInitialPage,
     goToLastPage,
-  } = usePagination(products, 4);
+  } = usePagination(products, 8);
 
   return (
     <>

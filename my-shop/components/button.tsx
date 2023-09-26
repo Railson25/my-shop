@@ -45,7 +45,7 @@ export const Button = ({
           : "",
         outline ? "bg-white text-[#088175]" : "",
         disabled
-          ? "opacity-30 cursor-not-allowed hover:bg-[#088178] text-white"
+          ? "opacity-30 cursor-not-allowed hover:bg-[#088178] text-white "
           : "",
         className
       )}

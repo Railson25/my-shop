@@ -7,6 +7,7 @@ import { FeatureProductCard } from "./feature-product-card";
 import { FeatureProducts } from "./feature-products";
 import { ButtonsPagination } from "./buttons-pagination";
 import { usePagination } from "@/hook/usePagination";
+import { useRouter } from "next/navigation";
 
 const products = categories.reduce<Product[]>((prevProducts, category) => {
   return [...prevProducts, ...category.products];
@@ -24,16 +25,19 @@ export const Pagination: React.FC = () => {
     goToLastPage,
   } = usePagination(products, 8);
 
+  const router = useRouter();
+
   return (
     <>
       <FeatureProducts>
-        {currentData().map((product, index) => (
+        {currentData().map((product) => (
           <FeatureProductCard
-            key={index}
+            key={product.id}
             src={product.src}
             brand={product.brand}
             name={product.name}
             price={product.price}
+            onclick={() => router.push(`/shop/product/${product.id}`)}
           />
         ))}
       </FeatureProducts>

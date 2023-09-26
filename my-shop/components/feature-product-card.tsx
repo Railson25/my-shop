@@ -8,9 +8,10 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 interface FeatureProductCardProps {
   src: string;
-  brand: string;
-  name: string;
-  price: string;
+  brand?: string;
+  name?: string;
+  price?: string;
+  onclick?: () => void;
 }
 
 export const FeatureProductCard = ({
@@ -18,9 +19,13 @@ export const FeatureProductCard = ({
   brand,
   name,
   price,
+  onclick,
 }: FeatureProductCardProps) => {
   return (
-    <div className="w-[23%] min-w-[250px] py-[10px] px-3 border border-[#cce7d0] rounded-[25px] cursor-pointer shadow-xl mx-0 my-[15px] hover:shadow-2xl transition relative ">
+    <div
+      onClick={onclick}
+      className="w-[23%] min-w-[250px] py-[10px] px-3 border border-[#cce7d0] rounded-[25px] cursor-pointer shadow-xl mx-0 my-[15px] hover:shadow-2xl transition relative "
+    >
       <Image
         alt="Card image"
         src={src}

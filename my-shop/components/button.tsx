@@ -1,9 +1,10 @@
 "use client";
 
+import { ButtonHTMLAttributes } from "react";
 import { IconType } from "react-icons";
 import { twMerge } from "tailwind-merge";
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   label?: string;
   banner?: boolean;
@@ -23,9 +24,12 @@ export const Button = ({
   pagination,
   children,
   outline,
+
+  ...props
 }: ButtonProps) => {
   return (
     <button
+      {...props}
       className={twMerge(
         `font-semibold cursor-pointer outline-none transition
                 ${banner ? "text-[13px]" : "text-[14px]"}

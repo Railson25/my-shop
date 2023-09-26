@@ -20,8 +20,6 @@ export const ButtonsPagination = ({
   onPage,
   pageNumber,
   maxPage,
-  goToInitialPage,
-  goToLastPage,
 }: ButtonsPaginationProps) => {
   const generatePages = () => {
     const pages: number[] = [];
@@ -41,18 +39,21 @@ export const ButtonsPagination = ({
     return pages;
   };
 
-  console.log(pageNumber);
   return (
-    <div className="py-10 px-20 flex text-center justify-center gap-x-2 ">
+    <div className="py-10 px-20 flex text-center justify-center gap-x-2 max-[477px]:px-3  ">
       <Button
         pagination
         icon={BsArrowLeft}
         onClick={onPrev}
         disabled={pageNumber === 1}
+        className="max-sm:px-1 max-sm:py-2"
       />
       {generatePages().map((page, index) =>
         page === -1 ? (
-          <span key={index} className="flex items-end px-5">
+          <span
+            key={index}
+            className="flex items-end px-5 max-sm:px-2 max-sm:py-2"
+          >
             ...
           </span>
         ) : (
@@ -61,6 +62,7 @@ export const ButtonsPagination = ({
             onClick={() => onPage?.(page)}
             key={index}
             outline={page === pageNumber}
+            className="max-sm:px-2 max-sm:py-2"
           >
             {page}
           </Button>
@@ -72,6 +74,7 @@ export const ButtonsPagination = ({
         icon={BsArrowRight}
         onClick={onNext}
         disabled={pageNumber === maxPage}
+        className="max-sm:px-1 max-sm:py-2"
       />
     </div>
   );

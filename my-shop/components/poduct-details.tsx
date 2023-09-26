@@ -46,8 +46,8 @@ export const ProductDetails = (props: { id: string }) => {
   }
 
   return (
-    <div className="py-10 px-20 flex mt-5">
-      <div className="w-[40%] mr-[50px]">
+    <div className="py-10 px-20 flex mt-5 max-md:flex-col max-md:px-10">
+      <div className="w-[40%] mr-[50px] max-md:w-full max-md:m-0">
         <Image alt="Product Image" src={mainImage} width={1024} height={720} />
 
         <div className="flex justify-between pt-2">
@@ -69,7 +69,7 @@ export const ProductDetails = (props: { id: string }) => {
         </div>
       </div>
 
-      <div className="w-[50%] pt-[30px]">
+      <div className="w-[50%] pt-[30px] max-md:w-full">
         <h6>Home / T-Shirt</h6>
         <h4 className="pt-10 pb-5 font-bold">{data?.name}</h4>
         <h2 className="text-[26px] font-bold">{data?.price} </h2>

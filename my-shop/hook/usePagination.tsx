@@ -12,7 +12,10 @@ interface UsePaginationResult<T> {
   goToLastPage: () => void;
 }
 
-export function usePagination<T>(data: T[], itemPerPage: number) {
+export function usePagination<T>(
+  data: T[],
+  itemPerPage: number
+): UsePaginationResult<T> {
   const [currentPage, setCurrentPage] = useState(1);
   const maxPage = Math.ceil(data.length / itemPerPage);
 

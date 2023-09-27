@@ -21,7 +21,7 @@ const menuItems = [
     label: "Shop",
   },
   {
-    src: "/",
+    src: "/blog",
     label: "Blog",
   },
   {
@@ -67,29 +67,23 @@ export const Navbar = () => {
               onClick={() => setCurrentActive(item.label)}
             />
           ))}
-          {/* <LinkItem
-            src="/shop"
-            label="Shop"
-            active={currentActive === "shop"}
-            onClick={() => setCurrentActive("shop")}
-          /> */}
 
           <LinkItem
-            src="/"
+            src="#"
             icon={AiOutlineShopping}
             className="max-md:hidden"
           />
           <LinkItem
             onClick={toggleClose}
-            src="/"
+            src="#"
             icon={AiOutlineClose}
             className="absolute top-[30px] left-[30px] md:hidden"
           />
         </nav>
       </div>
       <div className="hidden gap-x-[20px] items-center max-md:flex">
-        <LinkItem src="/" icon={AiOutlineShopping} />
-        <LinkItem src="/" icon={AiOutlineMenuFold} onClick={toggleOpen} />
+        <LinkItem src="#" icon={AiOutlineShopping} />
+        <LinkItem src="#" icon={AiOutlineMenuFold} onClick={toggleOpen} />
       </div>
     </div>
   );

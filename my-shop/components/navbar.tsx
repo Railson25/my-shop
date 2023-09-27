@@ -25,7 +25,7 @@ const menuItems = [
     label: "Blog",
   },
   {
-    src: "/",
+    src: "/about",
     label: "About",
   },
   {

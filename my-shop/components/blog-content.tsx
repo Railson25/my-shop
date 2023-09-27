@@ -1,11 +1,26 @@
+"use client";
+
 import Image from "next/image";
 import { LinkItem } from "./link";
 import { blogItems } from "@/mock/block";
+import { usePagination } from "@/hook/usePagination";
+import { ButtonsPagination } from "./buttons-pagination";
 
 export const BlogContent = () => {
+  const {
+    currentData,
+    nextPage,
+    backPage,
+    currentPage,
+    goToPage,
+    maxPage,
+    goToInitialPage,
+    goToLastPage,
+  } = usePagination(blogItems, 4);
+
   return (
     <div className="px-[150px] pt-[150px] flex flex-col gap-y-[90px] max-md:px-5 max-[477px]:pt-[100px] ">
-      {blogItems.map((blog, index: any) => (
+      {currentData().map((blog: any, index: any) => (
         <div
           key={index}
           className="flex items-center w-full relative max-[477px]:flex-col max-[477px]:items-start"
@@ -33,6 +48,15 @@ export const BlogContent = () => {
           </h1>
         </div>
       ))}
+      <ButtonsPagination
+        onNext={nextPage}
+        onPrev={backPage}
+        pageNumber={currentPage}
+        onPage={goToPage}
+        maxPage={maxPage}
+        goToInitialPage={goToInitialPage}
+        goToLastPage={goToLastPage}
+      />
     </div>
   );
 };

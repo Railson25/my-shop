@@ -41,4 +41,18 @@ export const blogItems: BlogItemType[] = [
     "Kickstart man braid godard coloring book. Raclette         waistcoat selfies yr wolf chartreuse hexagon irony, godard...",
     date: "15/04",
 },
+{
+    src: "/images/blog/b5.jpg",
+    title: "AW20 Menswear Trends",
+    description:
+    "Kickstart man braid godard coloring book. Raclette         waistcoat selfies yr wolf chartreuse hexagon irony, godard...",
+    date: "15/04",
+},
+{
+    src: "/images/blog/b7.jpg",
+    title: "AW20 Menswear Trends",
+    description:
+    "Kickstart man braid godard coloring book. Raclette         waistcoat selfies yr wolf chartreuse hexagon irony, godard...",
+    date: "15/04",
+},
 ];

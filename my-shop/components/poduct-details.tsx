@@ -8,7 +8,7 @@ import { productsFeatured } from "@/mock/product";
 import { useRouter } from "next/navigation";
 
 export const ProductDetails = (props: { id: string }) => {
-  const [mainImage, setMainImage] = useState(productsFeatured[0].src);
+  const [mainImage, setMainImage] = useState<string>("");
 
   const [load, setLoad] = useState(false);
   const [quantity, setQuantity] = useState(1);
@@ -22,7 +22,10 @@ export const ProductDetails = (props: { id: string }) => {
   const data = productsFeatured.find((product) => product.id === props.id);
 
   useEffect(() => {
-    if (data) return setLoad(true);
+    if (data) {
+      setMainImage(data?.src);
+      setLoad(true);
+    }
   }, [data]);
 
   if (!data) {

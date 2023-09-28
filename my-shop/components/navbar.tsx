@@ -29,7 +29,7 @@ const menuItems = [
     label: "About",
   },
   {
-    src: "/",
+    src: "/contact",
     label: "Contact",
   },
 ];

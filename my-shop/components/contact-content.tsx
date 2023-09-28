@@ -1,12 +1,17 @@
 "use client";
 
 import { AiOutlineClockCircle, AiOutlineMail } from "react-icons/ai";
-
+import {
+  useForm,
+  FieldValues,
+  FormProvider,
+  Controller,
+} from "react-hook-form";
 import { FiMap } from "react-icons/fi";
 import { BsFillTelephoneFill } from "react-icons/bs";
 
 import { Input } from "./input";
-import { useState } from "react";
+
 import { Button } from "./button";
 import { PeopleCard } from "./people-card";
 
@@ -30,8 +35,16 @@ const contactInformation = [
 ];
 
 export const ContactContent = () => {
-  const [name, setName] = useState("");
+  const methods = useForm({ mode: "all", reValidateMode: "onChange" });
 
+  const onSubmit = async (data: FieldValues) => {
+    console.log("sfgherd", data);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    methods.reset();
+  };
+
+  console.log(methods.formState.errors);
   return (
     <div className="py-10 px-20 max-md:px-5">
       <div className="flex items-center gap-x-3 justify-between max-sm:flex-col max-md:gap-y-4">
@@ -69,40 +82,38 @@ export const ContactContent = () => {
           <h2 className="text-[26px] leading-[35px] py-5">
             We love to hear from you
           </h2>
-          <div className="flex flex-col gap-y-2 w-full mb-5">
-            <Input
-              id="name"
-              label="Username"
-              onChange={(e: any) => setName(e.target.value)}
-              type="name"
-              value={name}
-            />
-            <Input
-              id="email"
-              label="E-mail"
-              onChange={(e: any) => setName(e.target.value)}
-              type="email"
-              value={name}
-            />
-            <Input
-              id="subject"
-              label="Subject"
-              onChange={(e: any) => setName(e.target.value)}
-              type="text"
-              value={name}
-            />
-          </div>
-          <textarea
-            name=""
-            id=""
-            cols={30}
-            rows={10}
-            placeholder="Your message"
-            className="w-full py-3 px-[15px] outline-none mb-5 border border-solid border-[#e1e1e1e]"
-          />
-          <Button className="bg-[#088178] text-white hover:bg-white hover:text-[#088178] border border-solid border-[#088178]">
-            Submit
-          </Button>
+
+          <FormProvider {...methods}>
+            <form
+              onSubmit={methods.handleSubmit(onSubmit)}
+              className="flex flex-col  gap-y-2 w-full mb-5"
+            >
+              <Input id="name" label="Name" type="name" name="name" />
+
+              {/* {errors.email && <p>{`${errors.email.message}`} </p>} */}
+
+              <Input id="email" label="E-mail" type="email" name="email" />
+              <Input id="subject" label="Subject" type="text" name="subject" />
+              <textarea
+                {...methods.register("message", {
+                  required: "Message is required",
+                })}
+                id="message"
+                cols={30}
+                rows={10}
+                placeholder="Your message"
+                className="w-full py-3 px-[15px] outline-none mb-5 border border-solid border-[#e1e1e1e]"
+              />
+
+              <Button
+                type="submit"
+                disabled={methods.formState.isSubmitting}
+                className="bg-[#088178] text-white hover:bg-white hover:text-[#088178] border border-solid border-[#088178] "
+              >
+                Submit
+              </Button>
+            </form>
+          </FormProvider>
         </div>
 
         <PeopleCard />

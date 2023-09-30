@@ -1,7 +1,7 @@
 import CartContent from "@/components/cart-content";
 import { Header } from "@/components/header";
 
-const Cart = ({ params }: { params: { id: string } }) => {
+const Cart = () => {
   return (
     <div>
       <Header
@@ -12,7 +12,7 @@ const Cart = ({ params }: { params: { id: string } }) => {
         className="bg-[url('/images/banner/b19.jpg')]  h-[40vh] items-center p-[14px] "
       />
 
-      <CartContent id={params.id} />
+      <CartContent />
     </div>
   );
 };

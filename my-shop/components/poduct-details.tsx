@@ -6,6 +6,7 @@ import { Button } from "./button";
 
 import { productsFeatured } from "@/mock/product";
 import { useRouter } from "next/navigation";
+import { useCart } from "@/context/cart-context";
 
 export const ProductDetails = (props: { id: string }) => {
   const [mainImage, setMainImage] = useState<string>("");
@@ -20,7 +21,7 @@ export const ProductDetails = (props: { id: string }) => {
   const router = useRouter();
 
   const data = productsFeatured.find((product) => product.id === props.id);
-
+  const { addProductsToCart } = useCart();
   useEffect(() => {
     if (data) {
       setMainImage(data?.src);
@@ -46,6 +47,13 @@ export const ProductDetails = (props: { id: string }) => {
     }
     setQuantity(value);
     console.log(ev.target.value);
+  }
+
+  function goTocart() {
+    if (data?.id) {
+      addProductsToCart(data.id);
+    }
+    router.push("/cart");
   }
 
   return (
@@ -93,6 +101,7 @@ export const ProductDetails = (props: { id: string }) => {
           className="w-[50px] h-[47px] pl-[10px] text-[16px] mr-[10px] focus:outline-none border border-solid border-neutral-400 rounded"
         />
         <Button
+          onClick={() => goTocart()}
           label="Add To cart"
           className="bg-[#088178] text-white hover:bg-white hover:text-[#088178] border border-solid hover:border-[#088178]"
         />

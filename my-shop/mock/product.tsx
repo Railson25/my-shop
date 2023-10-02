@@ -7,6 +7,7 @@ export interface Product {
   colors?: string[];
   sizes: string[];
   description: string;
+  quantity: number;
 }
 
 export const productsFeatured: Product[] = [
@@ -14,8 +15,9 @@ export const productsFeatured: Product[] = [
     id: "1",
     src: "/images/products/f1.jpg",
     brand: "adidas",
-    name: "Cartoon Astronaut T-Shirt",
-    price: "$78",
+    name: "Cartoon AstronautT-Shirt",
+    quantity: 10,
+    price: "78",
     colors: [
       "/images/products/f1.jpg",
       "/images/products/f1.jpg",
@@ -31,7 +33,8 @@ export const productsFeatured: Product[] = [
     src: "/images/products/f2.jpg",
     brand: "nike",
     name: "Galactic Space Hoodie",
-    price: "$65",
+    quantity: 10,
+    price: "65",
     sizes: ["s", "m"],
     colors: [
       "/images/products/f1.jpg",
@@ -47,7 +50,8 @@ export const productsFeatured: Product[] = [
     src: "/images/products/f3.jpg",
     brand: "puma",
     name: "Cosmic Explorer Pants",
-    price: "$45",
+    quantity: 10,
+    price: "45",
     sizes: ["s", "xl"],
     colors: [
       "/images/products/f1.jpg",
@@ -63,7 +67,8 @@ export const productsFeatured: Product[] = [
     src: "/images/products/f4.jpg",
     brand: "reebok",
     name: "Rocket Launch Sneakers",
-    price: "$95",
+    quantity: 10,
+    price: "95",
     sizes: ["m", "l"],
     colors: [
       "/images/products/f1.jpg",
@@ -79,7 +84,8 @@ export const productsFeatured: Product[] = [
     src: "/images/products/f5.jpg",
     brand: "under armour",
     name: "Astro Jogging Shorts",
-    price: "$32",
+    quantity: 10,
+    price: "32",
     sizes: ["s", "m", "xl"],
     colors: [
       "/images/products/f1.jpg",
@@ -95,7 +101,8 @@ export const productsFeatured: Product[] = [
     src: "/images/products/f6.jpg",
     brand: "new balance",
     name: "Comet Crewneck Sweatshirt",
-    price: "$55",
+    quantity: 10,
+    price: "55",
     sizes: ["s", "l"],
     colors: [
       "/images/products/f1.jpg",
@@ -111,7 +118,8 @@ export const productsFeatured: Product[] = [
     src: "/images/products/f7.jpg",
     brand: "asics",
     name: "Meteor Sports Jacket",
-    price: "$70",
+    quantity: 10,
+    price: "70",
     sizes: ["s", "m", "l"],
     colors: [
       "/images/products/f1.jpg",
@@ -127,7 +135,8 @@ export const productsFeatured: Product[] = [
     src: "/images/products/f8.jpg",
     brand: "fila",
     name: "Space Explorer Backpack",
-    price: "$40",
+    quantity: 10,
+    price: "40",
     sizes: ["s", "m"],
     colors: [
       "/images/products/f1.jpg",
@@ -146,7 +155,8 @@ export const productsArrivals: Product[] = [
     src: "/images/arrivals/n1.jpg",
     brand: "adidas",
     name: "Cartoon Astronaut T-Shirt",
-    price: "$78",
+    quantity: 10,
+    price: "78",
     sizes: ["xl", "lg"],
     colors: [
       "/images/products/f1.jpg",
@@ -162,7 +172,8 @@ export const productsArrivals: Product[] = [
     src: "/images/arrivals/n2.jpg",
     brand: "nike",
     name: "Galactic Space Hoodie",
-    price: "$65",
+    quantity: 10,
+    price: "65",
     sizes: ["s", "m"],
     colors: [
       "/images/products/f1.jpg",
@@ -178,7 +189,8 @@ export const productsArrivals: Product[] = [
     src: "/images/arrivals/n3.jpg",
     brand: "puma",
     name: "Cosmic Explorer Pants",
-    price: "$45",
+    quantity: 10,
+    price: "45",
     sizes: ["s", "xl"],
     colors: [
       "/images/products/f1.jpg",
@@ -194,7 +206,8 @@ export const productsArrivals: Product[] = [
     src: "/images/arrivals/n4.jpg",
     brand: "reebok",
     name: "Rocket Launch Sneakers",
-    price: "$95",
+    quantity: 10,
+    price: "95",
     sizes: ["m", "l"],
     colors: [
       "/images/products/f1.jpg",
@@ -210,7 +223,8 @@ export const productsArrivals: Product[] = [
     src: "/images/arrivals/n5.jpg",
     brand: "under armour",
     name: "Astro Jogging Shorts",
-    price: "$32",
+    quantity: 10,
+    price: "32",
     sizes: ["s", "m", "xl"],
     colors: [
       "/images/products/f1.jpg",
@@ -226,7 +240,8 @@ export const productsArrivals: Product[] = [
     src: "/images/arrivals/n6.jpg",
     brand: "new balance",
     name: "Comet Crewneck Sweatshirt",
-    price: "$55",
+    quantity: 10,
+    price: "55",
     sizes: ["s", "l"],
     colors: [
       "/images/products/f1.jpg",
@@ -242,7 +257,8 @@ export const productsArrivals: Product[] = [
     src: "/images/arrivals/n7.jpg",
     brand: "asics",
     name: "Meteor Sports Jacket",
-    price: "$70",
+    quantity: 10,
+    price: "70",
     sizes: ["s", "m", "l"],
     colors: [
       "/images/products/f1.jpg",
@@ -258,7 +274,8 @@ export const productsArrivals: Product[] = [
     src: "/images/arrivals/n8.jpg",
     brand: "fila",
     name: "Space Explorer Backpack",
-    price: "$40",
+    quantity: 10,
+    price: "40",
     sizes: ["s", "m"],
     colors: ["/images/products/f1.jpg", "/images/products/f8-color2.jpg"],
     description:

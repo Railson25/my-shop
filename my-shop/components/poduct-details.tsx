@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "./button";
 
-import { productsFeatured } from "@/mock/product";
+import { Product, categories } from "@/mock/product";
 import { useRouter } from "next/navigation";
+import { useCart } from "@/context/cart-context";
 
 export const ProductDetails = (props: { id: string }) => {
   const [mainImage, setMainImage] = useState<string>("");
@@ -19,8 +20,11 @@ export const ProductDetails = (props: { id: string }) => {
 
   const router = useRouter();
 
-  const data = productsFeatured.find((product) => product.id === props.id);
-
+  const products = categories.reduce<Product[]>((prevProducts, category) => {
+    return [...prevProducts, ...category.products];
+  }, []);
+  const data = products.find((product) => product.id === props.id);
+  const { addProductsToCart } = useCart();
   useEffect(() => {
     if (data) {
       setMainImage(data?.src);
@@ -39,13 +43,24 @@ export const ProductDetails = (props: { id: string }) => {
   function handleQuantity(ev: any) {
     let value = ev.target.value;
 
-    if (value >= 5) {
-      return setQuantity(5);
-    } else if (value <= 0) {
-      return setQuantity(1);
+    if (data && data.quantity !== undefined) {
+      if (value >= data.quantity) {
+        setQuantity(data.quantity);
+      } else if (value <= 0) {
+        setQuantity(1);
+      } else {
+        setQuantity(value);
+      }
+      console.log(ev.target.value);
     }
-    setQuantity(value);
-    console.log(ev.target.value);
+  }
+
+  function goTocart() {
+    if (data?.id) {
+      addProductsToCart(data.id, quantity);
+      console.log(quantity);
+    }
+    router.push("/cart");
   }
 
   return (
@@ -93,6 +108,7 @@ export const ProductDetails = (props: { id: string }) => {
           className="w-[50px] h-[47px] pl-[10px] text-[16px] mr-[10px] focus:outline-none border border-solid border-neutral-400 rounded"
         />
         <Button
+          onClick={() => goTocart()}
           label="Add To cart"
           className="bg-[#088178] text-white hover:bg-white hover:text-[#088178] border border-solid hover:border-[#088178]"
         />

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ClientOnly } from "@/components/client-only";
 import { Footermounted } from "@/components/footerMounted";
+import CartProvider from "@/context/cart-context";
 
 const poppins = Poppins({
   weight: ["400", "600", "700"],
@@ -24,9 +25,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <ClientOnly>
-          <Navbar />
-          {children}
-          <Footermounted />
+          <CartProvider>
+            <Navbar />
+            {children}
+            <Footermounted />
+          </CartProvider>
         </ClientOnly>
       </body>
     </html>

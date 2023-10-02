@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface Product {
   id: string;
@@ -9,7 +9,7 @@ interface Product {
 
 interface CartContextType {
   productCart: Product[];
-  addProductsToCart: (id: string) => void;
+  addProductsToCart: (id: string, quantity: number) => void;
   removeProductsToCart: (id: string) => void;
 }
 
@@ -24,15 +24,24 @@ export default function CartProvider({
 }) {
   const [productCart, setProductCart] = useState<Product[]>([]);
 
-  function addProductsToCart(id: string) {
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setProductCart(JSON.parse(savedCart));
+    }
+  }, []);
+
+  function addProductsToCart(id: string, quantity: number) {
     const updateProductsCart = [...productCart];
     const item = updateProductsCart.find((product) => product.id === id);
 
     if (!item) {
-      updateProductsCart.push({ id: id, quantity: 1 });
+      updateProductsCart.push({ id: id, quantity: quantity });
     } else {
-      item.quantity = item.quantity + 1;
+      item.quantity = quantity;
+      console.log(item);
     }
+    localStorage.setItem("cart", JSON.stringify(updateProductsCart));
     setProductCart(updateProductsCart);
   }
 
@@ -40,16 +49,12 @@ export default function CartProvider({
     const updateProductsCart = [...productCart];
     const item = updateProductsCart.find((product) => product.id === id);
 
-    if (item?.quantity && item?.quantity > 1) {
-      item.quantity = item.quantity - 1;
-      setProductCart(updateProductsCart);
-    } else {
-      const arrayFiltered = updateProductsCart.filter(
-        (product) => product.id !== id
-      );
+    const arrayFiltered = updateProductsCart.filter(
+      (product) => product.id !== id
+    );
 
-      setProductCart(arrayFiltered);
-    }
+    localStorage.setItem("cart", JSON.stringify(arrayFiltered));
+    setProductCart(arrayFiltered);
   }
 
   return (

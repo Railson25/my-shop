@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "./button";
 
-import { productsFeatured } from "@/mock/product";
+import { Product, categories } from "@/mock/product";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/cart-context";
 
@@ -20,7 +20,10 @@ export const ProductDetails = (props: { id: string }) => {
 
   const router = useRouter();
 
-  const data = productsFeatured.find((product) => product.id === props.id);
+  const products = categories.reduce<Product[]>((prevProducts, category) => {
+    return [...prevProducts, ...category.products];
+  }, []);
+  const data = products.find((product) => product.id === props.id);
   const { addProductsToCart } = useCart();
   useEffect(() => {
     if (data) {

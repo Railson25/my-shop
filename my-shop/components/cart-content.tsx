@@ -13,51 +13,88 @@ const products = categories.reduce<Product[]>((prevProducts, category) => {
 }, []);
 
 const CartContent = () => {
+  const data = products.find((product) => product === product);
+
   const [foundProducts, setFoundProducts] = useState<Product[]>([]);
-  const { removeProductsToCart, productCart } = useCart();
+  const [cartData, setCartData] = useState<{ id: string; quantity: number }[]>(
+    []
+  );
+
   const [quantity, setQuantity] = useState<number>(1);
+
+  console.log(quantity);
+
+  const { removeProductsToCart, productCart } = useCart();
 
   useEffect(() => {
     const foundProductsArray = [];
+    const savedCart = localStorage.getItem("cart");
 
-    for (const productCartItem of productCart) {
-      const foundProduct = products.find(
-        (product) => product.id === productCartItem.id
-      );
+    if (savedCart) {
+      const parsedCart = JSON.parse(savedCart);
+      setCartData(parsedCart);
 
-      if (foundProduct) {
-        foundProductsArray.push(foundProduct);
-      } else {
-        console.log(`Produto com o ID ${productCartItem.id} não encontrado.`);
+      for (const cartItem of parsedCart) {
+        const foundProduct = products.find(
+          (product) => product.id === cartItem.id
+        );
+
+        if (foundProduct) {
+          foundProductsArray.push(foundProduct);
+        } else {
+          console.log(`Produto com o ID ${cartItem.id} não encontrado.`);
+        }
       }
-    }
 
-    setFoundProducts(foundProductsArray);
+      setFoundProducts(foundProductsArray);
+    }
   }, [productCart]);
 
-  function handleQuantity(ev: any) {
-    let value = ev.target.value;
+  function handleQuantity(
+    ev: React.ChangeEvent<HTMLInputElement>,
+    productId: string
+  ) {
+    const newQuantity = parseInt(ev.target.value, 10);
 
-    if (value >= 5) {
-      return setQuantity(5);
-    } else if (value <= 0) {
-      return setQuantity(1);
+    if (!isNaN(newQuantity) && newQuantity >= 1) {
+      const productData = products.find((product) => product.id === productId);
+
+      if (productData) {
+        const maxQuantity = productData.quantity || 1;
+
+        if (newQuantity > maxQuantity) {
+          setQuantity(maxQuantity);
+        } else {
+          const updatedCartData = cartData.map((item) =>
+            item.id === productId ? { ...item, quantity: newQuantity } : item
+          );
+          setCartData(updatedCartData);
+        }
+      } else {
+        console.log(`Produto com o ID ${productId} não encontrado.`);
+      }
     }
-    setQuantity(value);
-    console.log(ev.target.value);
   }
 
-  function calculateTotalPrice() {
-    let total = 0;
+  function calculateTotalPrice(productId: string) {
+    const product = foundProducts.find((p) => p.id === productId);
 
-    for (const product of foundProducts) {
-      total += parseFloat(product.price) * quantity;
+    if (!product) {
+      return 0;
     }
 
-    return total;
+    const productQuantity =
+      cartData.find((item) => item.id === productId)?.quantity || 0;
+
+    const maxQuantity = product.quantity || 1;
+
+    return parseFloat(product.price) * Math.min(productQuantity, maxQuantity);
   }
 
-  const totalPrice = calculateTotalPrice();
+  const itemTotalPrices = foundProducts.map((product) => ({
+    id: product.id,
+    totalPrice: calculateTotalPrice(product.id),
+  }));
 
   return (
     <div className="py-10 px-20">
@@ -101,14 +138,17 @@ const CartContent = () => {
 
                 <div className="w-[150px] text-center items-center justify-end flex">
                   <input
-                    value={quantity}
-                    onChange={handleQuantity}
+                    value={
+                      cartData.find((item) => item.id === product.id)
+                        ?.quantity || 0
+                    }
+                    onChange={(ev) => handleQuantity(ev, product.id)}
                     type="number"
                     className="w-[70px] py-[10px] pr-[5px] pl-[15px]  "
                   />
                 </div>
                 <p className="w-[150px] text-center text-[13px] items-center justify-center flex">
-                  R$: {totalPrice.toFixed(2)}
+                  R$: {calculateTotalPrice(product.id).toFixed(2)}
                 </p>
               </li>
             ))}

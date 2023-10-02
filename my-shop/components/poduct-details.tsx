@@ -40,18 +40,22 @@ export const ProductDetails = (props: { id: string }) => {
   function handleQuantity(ev: any) {
     let value = ev.target.value;
 
-    if (value >= 5) {
-      return setQuantity(5);
-    } else if (value <= 0) {
-      return setQuantity(1);
+    if (data && data.quantity !== undefined) {
+      if (value >= data.quantity) {
+        setQuantity(data.quantity);
+      } else if (value <= 0) {
+        setQuantity(1);
+      } else {
+        setQuantity(value);
+      }
+      console.log(ev.target.value);
     }
-    setQuantity(value);
-    console.log(ev.target.value);
   }
 
   function goTocart() {
     if (data?.id) {
-      addProductsToCart(data.id);
+      addProductsToCart(data.id, quantity);
+      console.log(quantity);
     }
     router.push("/cart");
   }

@@ -97,8 +97,8 @@ const CartContent = () => {
   }));
 
   return (
-    <div className="py-10 px-20">
-      <ul className="w-full border-collapse table-fixed whitespace-nowrap flex flex-col justify-center items-center">
+    <div className="py-10 px-20 max-md:px-1 ">
+      <ul className="w-full border-collapse table-fixed whitespace-nowrap flex flex-col  items-center overflow-x-auto">
         <li className="border border-[#e2e9e1] border-l-0 border-r-0 mb-[15px] ">
           <ul className="flex py-[18px] font-bold uppercase text-[13px]">
             <li className="w-[100px] text-center">Remove</li>
@@ -155,6 +155,55 @@ const CartContent = () => {
           </ul>
         </li>
       </ul>
+
+      <div className="flex flex-wrap justify-between pt-10 max-md:flex-col">
+        <div className="w-[50%] mb-[30px] max-md:w-full">
+          <h3 className="pb-[15px]">Apply Coupon</h3>
+          <div>
+            <input
+              type="text"
+              placeholder="Enter Your Coupon"
+              className="py-[10px] px-5 outline-none w-[60%] mr-[10px] border border-[#e2e9e1]"
+            />
+            <Button className="border border-solid border-[#088178] bg-[#088178] text-white py-3 px-5 hover:bg-white hover:text-[#088178]">
+              Apply
+            </Button>
+          </div>
+        </div>
+
+        <div className="w-[50%] mb-[30px] border border-[#e2e9e1] p-[30px] max-md:w-full">
+          <h3 className="font-semibold pb-[30px]">Cart total</h3>
+          <ul className="border-collapse mb-5">
+            <li className="flex">
+              <h3 className=" w-[50%] border border-[#e2e9e1] p-[13px] text-[13px]">
+                Cart subtotal
+              </h3>
+              <h3 className=" w-[50%] border border-[#e2e9e1] p-[13px] text-[13px]">
+                $ 335
+              </h3>
+            </li>
+            <li className="flex">
+              <h3 className=" w-[50%] border border-[#e2e9e1] p-[13px] text-[13px]">
+                shipping
+              </h3>
+              <h3 className=" w-[50%] border border-[#e2e9e1] p-[13px] text-[13px]">
+                Free
+              </h3>
+            </li>
+            <li className="flex">
+              <h3 className=" w-[50%] border border-[#e2e9e1] p-[13px] text-[13px] font-extrabold">
+                Total
+              </h3>
+              <h3 className=" w-[50%] border border-[#e2e9e1] p-[13px] text-[13px] font-extrabold">
+                $335
+              </h3>
+            </li>
+          </ul>
+          <Button className="border border-solid border-[#088178] bg-[#088178] text-white py-3 px-5 hover:bg-white hover:text-[#088178] ">
+            Proceed to checkout
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };

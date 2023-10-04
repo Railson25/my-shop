@@ -115,7 +115,7 @@ const CartContent = () => {
   return (
     <div className="py-10 px-20 max-md:px-1 ">
       <ul className="w-full border-collapse table-fixed whitespace-nowrap flex flex-col  items-center overflow-x-auto">
-        <li className="border border-[#e2e9e1] border-l-0 border-r-0 mb-[15px] flex w-full">
+        <li className="border border-[#e2e9e1] border-l-0 border-r-0 mb-[15px] flex w-full lg:justify-center ">
           <ul className="flex py-[18px] font-bold uppercase text-[13px]">
             <li className="min-w-[100px] text-center">Remove</li>
             <li className="min-w-[150px] text-center">Image</li>
@@ -125,7 +125,7 @@ const CartContent = () => {
             <li className="min-w-[150px] text-center">Subtotal</li>
           </ul>
         </li>
-        <li className="flex w-full">
+        <li className="flex w-full lg:justify-center">
           <ul className="flex flex-col gap-y-5">
             {foundProducts.map((product) => (
               <li className="flex w-full" key={product.id}>

@@ -101,12 +101,12 @@ const CartContent = () => {
       <ul className="w-full border-collapse table-fixed whitespace-nowrap flex flex-col  items-center overflow-x-auto">
         <li className="border border-[#e2e9e1] border-l-0 border-r-0 mb-[15px] ">
           <ul className="flex py-[18px] font-bold uppercase text-[13px]">
-            <li className="w-[100px] text-center">Remove</li>
-            <li className="w-[150px] text-center">Image</li>
-            <li className="w-[250px] text-center">Product</li>
-            <li className="w-[150px] text-center">Price</li>
-            <li className="w-[150px] text-center">Quantity</li>
-            <li className="w-[150px] text-center">Subtotal</li>
+            <li className="min-w-[100px] text-center">Remove</li>
+            <li className="min-w-[150px] text-center">Image</li>
+            <li className="min-w-[250px] text-center">Product</li>
+            <li className="min-w-[150px] text-center">Price</li>
+            <li className="min-w-[150px] text-center">Quantity</li>
+            <li className="min-w-[150px] text-center">Subtotal</li>
           </ul>
         </li>
         <li>
@@ -115,10 +115,10 @@ const CartContent = () => {
               <li className="flex" key={product.id}>
                 <Button
                   onClick={() => removeProductsToCart(product.id)}
-                  className="w-[100px] flex justify-center items-center hover:text-red-600"
+                  className="min-w-[100px] flex justify-center items-center hover:text-red-600"
                   icon={CiCircleRemove}
                 />
-                <div className="w-[150px] text-center justify-center flex">
+                <div className="min-w-[150px] text-center justify-center flex">
                   <Image
                     alt="Image"
                     src={product.src}
@@ -128,15 +128,15 @@ const CartContent = () => {
                   />
                 </div>
 
-                <h4 className="w-[250px] text-center text-[13px] items-center justify-center flex">
+                <h4 className="min-w-[250px] text-center text-[13px] items-center justify-center flex">
                   {product.name}
                 </h4>
 
-                <p className="w-[150px] text-center items-center justify-center flex text-[13px]">
+                <p className="min-w-[150px] text-center items-center justify-center flex text-[13px]">
                   R$: {product.price}
                 </p>
 
-                <div className="w-[150px] text-center items-center justify-end flex">
+                <div className="min-w-[150px] text-center items-center justify-end flex">
                   <input
                     value={
                       cartData.find((item) => item.id === product.id)
@@ -147,7 +147,7 @@ const CartContent = () => {
                     className="w-[70px] py-[10px] pr-[5px] pl-[15px]  "
                   />
                 </div>
-                <p className="w-[150px] text-center text-[13px] items-center justify-center flex">
+                <p className="min-w-[150px] text-center text-[13px] items-center justify-center flex">
                   R$: {calculateTotalPrice(product.id).toFixed(2)}
                 </p>
               </li>

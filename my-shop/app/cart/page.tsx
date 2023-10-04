@@ -5,11 +5,11 @@ const Cart = () => {
   return (
     <div>
       <Header
-        subtitle="#readmore"
-        paragraph="Real all case studies our products"
+        subtitle="#cart"
+        paragraph="Add your coupon code $ SAVE upto 70%"
         h2Style="font-bold text-white"
         pStyle="text-white"
-        className="bg-[url('/images/banner/b19.jpg')]  h-[40vh] items-center p-[14px] "
+        className="bg-[url('/images/about/banner.png')]  h-[40vh] items-center p-[14px] "
       />
 
       <CartContent />

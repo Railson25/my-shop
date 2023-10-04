@@ -96,6 +96,22 @@ const CartContent = () => {
     totalPrice: calculateTotalPrice(product.id),
   }));
 
+  const totalValue = itemTotalPrices.reduce(
+    (total, item) => total + item.totalPrice,
+    0
+  );
+
+  let deliveryMessage =
+    "valor da entrega abaixo de 350 reais em compras  e de R$20,00";
+
+  const deliveryFee = totalValue < 350 ? 20 : 0;
+
+  if (totalValue >= 350) {
+    deliveryMessage = "Free";
+  }
+
+  const finalTotalValue = totalValue + deliveryFee;
+
   return (
     <div className="py-10 px-20 max-md:px-1 ">
       <ul className="w-full border-collapse table-fixed whitespace-nowrap flex flex-col  items-center overflow-x-auto">
@@ -179,7 +195,7 @@ const CartContent = () => {
                 Cart subtotal
               </h3>
               <h3 className=" w-[50%] border border-[#e2e9e1] p-[13px] text-[13px]">
-                $ 335
+                {totalValue}
               </h3>
             </li>
             <li className="flex">
@@ -187,7 +203,7 @@ const CartContent = () => {
                 shipping
               </h3>
               <h3 className=" w-[50%] border border-[#e2e9e1] p-[13px] text-[13px]">
-                Free
+                {deliveryMessage}
               </h3>
             </li>
             <li className="flex">
@@ -195,7 +211,7 @@ const CartContent = () => {
                 Total
               </h3>
               <h3 className=" w-[50%] border border-[#e2e9e1] p-[13px] text-[13px] font-extrabold">
-                $335
+                {finalTotalValue}
               </h3>
             </li>
           </ul>

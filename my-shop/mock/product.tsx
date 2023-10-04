@@ -20,9 +20,9 @@ export const productsFeatured: Product[] = [
     price: "78",
     colors: [
       "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/products/f2.jpg",
+      "/images/products/f3.jpg",
+      "/images/products/f4.jpg",
     ],
     sizes: ["xl", "lg"],
     description:
@@ -38,9 +38,9 @@ export const productsFeatured: Product[] = [
     sizes: ["s", "m"],
     colors: [
       "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/products/f5.jpg",
+      "/images/products/f6.jpg",
+      "/images/products/f7.jpg",
     ],
     description:
       "O moletom Galactic Space é ideal para noites frias e aventuras intergalácticas. Fique quentinho e estiloso ao mesmo tempo!",
@@ -55,9 +55,9 @@ export const productsFeatured: Product[] = [
     sizes: ["s", "xl"],
     colors: [
       "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/products/f8.jpg",
+      "/images/products/f2.jpg",
+      "/images/products/f3.jpg",
     ],
     description:
       "As calças Cosmic Explorer são perfeitas para explorar o espaço e a moda. Confortáveis e versáteis para qualquer aventura.",
@@ -72,9 +72,9 @@ export const productsFeatured: Product[] = [
     sizes: ["m", "l"],
     colors: [
       "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/products/f4.jpg",
+      "/images/products/f5.jpg",
+      "/images/products/f6.jpg",
     ],
     description:
       "Os tênis Rocket Launch são projetados para decolar em grande estilo. Leves, confortáveis e cheios de energia.",
@@ -89,9 +89,9 @@ export const productsFeatured: Product[] = [
     sizes: ["s", "m", "xl"],
     colors: [
       "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/products/f7.jpg",
+      "/images/products/f8.jpg",
+      "/images/products/f2.jpg",
     ],
     description:
       "Os shorts Astro Jogging são perfeitos para suas corridas espaciais. Respiráveis e estilosos para qualquer atleta.",
@@ -106,9 +106,9 @@ export const productsFeatured: Product[] = [
     sizes: ["s", "l"],
     colors: [
       "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/products/f3.jpg",
+      "/images/products/f4.jpg",
+      "/images/products/f5.jpg",
     ],
     description:
       "A blusa Comet Crewneck é sua passagem para o conforto e estilo. Perfeita para relaxar após suas aventuras espaciais.",
@@ -123,9 +123,9 @@ export const productsFeatured: Product[] = [
     sizes: ["s", "m", "l"],
     colors: [
       "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/products/f6.jpg",
+      "/images/products/f7.jpg",
+      "/images/products/f8.jpg",
     ],
     description:
       "O casaco Meteor Sports é resistente às intempéries e à moda. Mantenha-se aquecido enquanto enfrenta o espaço sideral.",
@@ -140,9 +140,9 @@ export const productsFeatured: Product[] = [
     sizes: ["s", "m"],
     colors: [
       "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/products/f2.jpg",
+      "/images/products/f3.jpg",
+      "/images/products/f4.jpg",
     ],
     description:
       "A mochila Space Explorer é a parceira perfeita para suas expedições cósmicas. Carregue tudo o que precisa com estilo.",
@@ -159,10 +159,10 @@ export const productsArrivals: Product[] = [
     price: "78",
     sizes: ["xl", "lg"],
     colors: [
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/arrivals/n1.jpg",
+      "/images/arrivals/n2.jpg",
+      "/images/arrivals/n3.jpg",
+      "/images/arrivals/n4.jpg",
     ],
     description:
       "A camiseta Cartoon Astronaut é perfeita para os entusiastas do espaço. Feita com materiais de alta qualidade, oferece conforto e estilo únicos.",
@@ -176,10 +176,10 @@ export const productsArrivals: Product[] = [
     price: "65",
     sizes: ["s", "m"],
     colors: [
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/arrivals/n1.jpg",
+      "/images/arrivals/n5.jpg",
+      "/images/arrivals/n6.jpg",
+      "/images/arrivals/n7.jpg",
     ],
     description:
       "O moletom Galactic Space é ideal para noites frias e aventuras intergalácticas. Fique quentinho e estiloso ao mesmo tempo!",
@@ -193,10 +193,10 @@ export const productsArrivals: Product[] = [
     price: "45",
     sizes: ["s", "xl"],
     colors: [
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/arrivals/n1.jpg",
+      "/images/arrivals/n8.jpg",
+      "/images/arrivals/n2.jpg",
+      "/images/arrivals/n3.jpg",
     ],
     description:
       "As calças Cosmic Explorer são perfeitas para explorar o espaço e a moda. Confortáveis e versáteis para qualquer aventura.",
@@ -210,10 +210,10 @@ export const productsArrivals: Product[] = [
     price: "95",
     sizes: ["m", "l"],
     colors: [
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/arrivals/n1.jpg",
+      "/images/arrivals/n4.jpg",
+      "/images/arrivals/n5.jpg",
+      "/images/arrivals/n6.jpg",
     ],
     description:
       "Os tênis Rocket Launch são projetados para decolar em grande estilo. Leves, confortáveis e cheios de energia.",
@@ -227,10 +227,10 @@ export const productsArrivals: Product[] = [
     price: "32",
     sizes: ["s", "m", "xl"],
     colors: [
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/arrivals/n1.jpg",
+      "/images/arrivals/n7.jpg",
+      "/images/arrivals/n8.jpg",
+      "/images/arrivals/n2.jpg",
     ],
     description:
       "Os shorts Astro Jogging são perfeitos para suas corridas espaciais. Respiráveis e estilosos para qualquer atleta.",
@@ -244,10 +244,10 @@ export const productsArrivals: Product[] = [
     price: "55",
     sizes: ["s", "l"],
     colors: [
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/arrivals/n1.jpg",
+      "/images/arrivals/n3.jpg",
+      "/images/arrivals/n4.jpg",
+      "/images/arrivals/n5.jpg",
     ],
     description:
       "A blusa Comet Crewneck é sua passagem para o conforto e estilo. Perfeita para relaxar após suas aventuras espaciais.",
@@ -261,10 +261,10 @@ export const productsArrivals: Product[] = [
     price: "70",
     sizes: ["s", "m", "l"],
     colors: [
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
-      "/images/products/f1.jpg",
+      "/images/arrivals/n1.jpg",
+      "/images/arrivals/n6.jpg",
+      "/images/arrivals/n7.jpg",
+      "/images/arrivals/n8.jpg",
     ],
     description:
       "O casaco Meteor Sports é resistente às intempéries e à moda. Mantenha-se aquecido enquanto enfrenta o espaço sideral.",
@@ -277,7 +277,12 @@ export const productsArrivals: Product[] = [
     quantity: 10,
     price: "40",
     sizes: ["s", "m"],
-    colors: ["/images/products/f1.jpg", "/images/products/f8-color2.jpg"],
+    colors: [
+      "/images/arrivals/n1.jpg",
+      "/images/arrivals/n2.jpg",
+      "/images/arrivals/n3.jpg",
+      "/images/arrivals/n4.jpg",
+    ],
     description:
       "A mochila Space Explorer é a parceira perfeita para suas expedições cósmicas. Carregue tudo o que precisa com estilo.",
   },

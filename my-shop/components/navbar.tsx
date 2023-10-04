@@ -68,7 +68,10 @@ export const Navbar = () => {
               src={item.src}
               label={item.label}
               active={currentActive === item.label}
-              onClick={() => setCurrentActive(item.label)}
+              onClick={() => {
+                setCurrentActive(item.label);
+                toggleClose();
+              }}
             />
           ))}
 

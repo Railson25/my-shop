@@ -12,12 +12,36 @@ import { Information } from "@/components/information";
 import { InformationCard } from "@/components/information-card";
 
 import { Newsletter } from "@/components/newsletter";
-import { categories } from "@/mock/product";
+import { useProducts } from "@/hook/useProducts";
+import { CategoriesType } from "@/mock/product";
 import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function Home() {
   const router = useRouter();
+
+  const products = useProducts();
+  const productsFeatured = products && products["productsFeatured"];
+
+  const productsArrivals = products && products["productsArrivals"];
+
+  const categories: CategoriesType[] = [
+    {
+      name: "featured",
+      products: productsFeatured || [],
+      title: "New Featured",
+      subtitle: "Summer Collection New Modern Design",
+    },
+    {
+      name: "arrivals",
+      products: productsArrivals || [],
+      title: "New Arrivals",
+      subtitle: "Summer Collection New Modern Design",
+    },
+  ];
+
+  console.log(categories);
+
   return (
     <div>
       <Header

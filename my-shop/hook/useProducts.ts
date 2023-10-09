@@ -17,7 +17,7 @@ export function useProducts(){
   
 
     useEffect(() => {
-        axios.get(`${apiRoute}/products`)
+        axios.get(`${apiRoute}`)
         .then(res => {
           setProducts(res.data);
         })

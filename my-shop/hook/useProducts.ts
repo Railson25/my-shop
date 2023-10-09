@@ -1,5 +1,6 @@
-import { CategoriesType, Product } from '@/mock/product'
+import { Product } from '@/mock/product'
 import axios from 'axios'
+
 
 import {useEffect, useState} from 'react'
 
@@ -8,11 +9,15 @@ interface Api {
     productsArrivals: Product[]
   }
 
+
 export function useProducts(){
     const [products, setProducts] = useState<Api>()
 
+    const apiRoute = process.env.NEXT_PUBLIC_API as string
+  
+
     useEffect(() => {
-        axios.get("http://localhost:3000/api/products")
+        axios.get(`${apiRoute}/products`)
         .then(res => {
           setProducts(res.data);
         })

@@ -4,11 +4,16 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "./button";
 
-import { Product, categories } from "@/mock/product";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/cart-context";
+import { useProducts } from "@/hook/useProducts";
 
 export const ProductDetails = (props: { id: string }) => {
+  const products = useProducts();
+  const productsFeatured = products && products["productsFeatured"];
+
+  const productsArrivals = products && products["productsArrivals"];
+  const combinedArray = (productsFeatured || []).concat(productsArrivals || []);
   const [mainImage, setMainImage] = useState<string>("");
 
   const [load, setLoad] = useState(false);
@@ -20,10 +25,10 @@ export const ProductDetails = (props: { id: string }) => {
 
   const router = useRouter();
 
-  const products = categories.reduce<Product[]>((prevProducts, category) => {
-    return [...prevProducts, ...category.products];
-  }, []);
-  const data = products.find((product) => product.id === props.id);
+  // const products = categories.reduce<Product[]>((prevProducts, category) => {
+  //   return [...prevProducts, ...category.products];
+  // }, []);
+  const data = combinedArray.find((product) => product.id === props.id);
   const { addProductsToCart } = useCart();
   useEffect(() => {
     if (data) {

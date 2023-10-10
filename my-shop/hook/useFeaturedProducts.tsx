@@ -1,15 +1,19 @@
 "use client";
 
 import { FeatureProductCard } from "@/components/feature-product-card";
-import { productsFeatured } from "@/mock/product";
+
 import { useRouter } from "next/navigation";
+import { useProducts } from "./useProducts";
 
 export function useFeaturedProducts() {
+  const products = useProducts();
+  const productsFeatured = products && products["productsFeatured"];
+
   function SmallListComponent() {
     const router = useRouter();
     return (
       <>
-        {productsFeatured.slice(0, 4).map((product) => (
+        {productsFeatured?.slice(0, 4).map((product) => (
           <FeatureProductCard
             key={product.id}
             src={product.src}

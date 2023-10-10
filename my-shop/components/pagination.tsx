@@ -1,19 +1,26 @@
 "use client";
 
 import React from "react";
-import { Product, categories } from "@/mock/product";
+
 import { FeatureProductCard } from "./feature-product-card";
 
 import { FeatureProducts } from "./feature-products";
 import { ButtonsPagination } from "./buttons-pagination";
 import { usePagination } from "@/hook/usePagination";
 import { useRouter } from "next/navigation";
+import { useProducts } from "@/hook/useProducts";
 
-const products = categories.reduce<Product[]>((prevProducts, category) => {
-  return [...prevProducts, ...category.products];
-}, []);
+// const products = categories.reduce<Product[]>((prevProducts, category) => {
+//   return [...prevProducts, ...category.products];
+// }, []);
 
 export const Pagination: React.FC = () => {
+  const products = useProducts();
+  const productsFeatured = products && products["productsFeatured"];
+
+  const productsArrivals = products && products["productsArrivals"];
+  const combinedArray = (productsFeatured || []).concat(productsArrivals || []);
+
   const {
     currentData,
     nextPage,
@@ -23,7 +30,7 @@ export const Pagination: React.FC = () => {
     maxPage,
     goToInitialPage,
     goToLastPage,
-  } = usePagination(products, 8);
+  } = usePagination(combinedArray, 8);
 
   const router = useRouter();
 

@@ -37,12 +37,12 @@ export const ProductDetails = (props: { id: string }) => {
     }
   }, [data]);
 
-  if (!data) {
-    router.back();
-  }
-
   if (!load) {
     return;
+  }
+
+  if (!data && load) {
+    router.back();
   }
 
   function handleQuantity(ev: any) {

@@ -9,86 +9,53 @@ const {Video} = new Mux(
     process.env.MUX_TOKEN_SECRET!
 )
 
-export async function DELETE(req: Request, {params}: {params: {courseId: string; chapterId: string}}){
+export async function DELETE(
+    req: Request,
+    { params }: { params: { courseId: string } }
+  ) {
     try {
-        const {userId} = auth()
-
-        if(!userId){
-            return new NextResponse('Unauthorized', {status: 401})
-        }
-
-        const ownCourse = await db.course.findUnique({
-            where:{
-                id: params.courseId,
-                userId: userId
+      const { userId } = auth();
+  
+      if (!userId) {
+        return new NextResponse("Unauthorized", { status: 401 });
+      }
+  
+      const course = await db.course.findUnique({
+        where: {
+          id: params.courseId,
+          userId: userId,
+        },
+        include: {
+          chapters: {
+            include: {
+              muxData: true,
             }
-        })
-
-        if(!ownCourse){
-            return new NextResponse('Unauthorized', {status: 401})
+          }
         }
-
-        const chapter = await db.chapter.findUnique({
-            where:{
-                id: params.chapterId,
-                courseId: params.courseId
-            }
-        })
-
-        if(!chapter){
-            return new NextResponse('Not Found', {status: 40})
+      });
+  
+      if (!course) {
+        return new NextResponse("Not found", { status: 404 });
+      }
+  
+      for (const chapter of course.chapters) {
+        if (chapter.muxData?.assetId) {
+          await Video.Assets.del(chapter.muxData.assetId);
         }
-
-        if(chapter.videoUrl){
-            const existingMuxData = await db.muxData.findFirst({
-                where: {
-                    chapterId: params.chapterId
-                }
-            })
-
-            if(existingMuxData){
-                await Video.Assets.del(existingMuxData.assetId)
-                await db.muxData.delete({
-                    where:{
-                        id: existingMuxData.id
-                    }
-                })
-
-            }
-        }
-
-        const deletedChapter = await db.chapter.delete({
-            where:{
-                id: params.chapterId
-            }
-        })
-
-        const publishedChaptersInCourse = await db.chapter.findMany({
-            where:{
-                courseId: params.courseId,
-                isPublished: true
-            }
-        })
-
-        if(!publishedChaptersInCourse.length){
-            await db.course.update({
-                where:{
-                    id: params.courseId
-                },
-                data:{
-                    isPublished: false
-                }
-            })
-        }
-
-        return NextResponse.json(deletedChapter) 
-        
-
+      }
+  
+      const deletedCourse = await db.course.delete({
+        where: {
+          id: params.courseId,
+        },
+      });
+  
+      return NextResponse.json(deletedCourse);
     } catch (error) {
-        console.log('[COURSES_ID_DELETE]', error)
-        return new NextResponse('Internal Error', {status: 500})
+      console.log("[COURSE_ID_DELETE]", error);
+      return new NextResponse("Internal Error", { status: 500 });
     }
-}
+  }
     
 
 

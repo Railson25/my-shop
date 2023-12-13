@@ -34,7 +34,7 @@ O My shopp é uma e-commecer online dedicado aos estudos  💜
 
 No link a seguir você encontra o guia no Notion referente aos desafios propostos para que você possa percorrer a milha extra e incrementar ainda mais essa aplicação. Lá também você encontra um guia mostrando todo o passo a passo de como realizar o deploy tanto do backend quanto do frontend.
 
-- [Desafio Happy 2.0](https://harmless-ambulance-873.notion.site/Vers-o-1-0-do-Less-635d422ae9bd4512bc2de7c1327a9da8?pvs=4)
+- [Desafio my shopp 1.0](https://harmless-ambulance-873.notion.site/Vers-o-1-0-do-Less-635d422ae9bd4512bc2de7c1327a9da8?pvs=4)
 
 ---
 

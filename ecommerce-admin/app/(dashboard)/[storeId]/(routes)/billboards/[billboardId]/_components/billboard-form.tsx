@@ -24,7 +24,6 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
 
-import { useOrigin } from "@/hooks/use-origin";
 import { ImageUpload } from "@/components/image-upload";
 
 interface BillboardFormProps {
@@ -43,7 +42,6 @@ export const BillboardForm = ({ initialData }: BillboardFormProps) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const origin = useOrigin();
 
   const title = initialData ? "Edit billboard" : "Create billboard";
   const description = initialData ? "Edit a billboard" : "Add a new billboard";
@@ -88,7 +86,7 @@ export const BillboardForm = ({ initialData }: BillboardFormProps) => {
         `/api/${params.storeId}/billboards/${params.billboardId}`
       );
       router.refresh();
-      router.push("/");
+      router.push(`/${params.storeId}/billboards`);
       toast.success("Billboard deleted");
     } catch (error) {
       toast.error(
@@ -169,7 +167,6 @@ export const BillboardForm = ({ initialData }: BillboardFormProps) => {
           </Button>
         </form>
       </Form>
-      <Separator />
     </>
   );
 };

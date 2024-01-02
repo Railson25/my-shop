@@ -5,42 +5,34 @@ import { Stars } from "./stars";
 import { LinkItem } from "./link";
 
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { Product } from "@/types/types";
+import { formatter } from "@/lib/utils";
 
-interface FeatureProductCardProps {
-  src: string;
-  brand?: string;
-  name?: string;
-  price?: string;
-  onclick?: () => void;
+interface ProductCardProps {
+  data: Product;
 }
 
-export const FeatureProductCard = ({
-  src,
-  brand,
-  name,
-  price,
-  onclick,
-}: FeatureProductCardProps) => {
+export const ProductCard = ({ data }: ProductCardProps) => {
   return (
     <div
-      onClick={onclick}
+      onClick={() => {}}
       className="w-[23%] min-w-[250px] py-[10px] px-3 border border-[#cce7d0] rounded-[25px] cursor-pointer shadow-xl mx-0 my-[15px] hover:shadow-2xl transition relative "
     >
       <Image
         alt="Card image"
-        src={src}
+        src={data?.images?.[0]?.url}
         width={1000}
         height={1}
         className="w-full rounded-[20px]"
       />
       <div className="text-start py-[10px] px-0">
-        <span className="text-[#606063] text-xs">{brand}</span>
-        <h5 className="pt-[7px] text-[14px] text-neutral-700">{name}</h5>
+        <span className="text-[#606063] text-xs">{data.category.name}</span>
+        <h5 className="pt-[7px] text-[14px] text-neutral-700">{data.name}</h5>
         <div>
           <Stars />
         </div>
         <h4 className="pt-[7px] text-[15px] font-bold text-[#088178]">
-          {price}
+          {formatter.format(Number(data.price))}
         </h4>
       </div>
 

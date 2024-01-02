@@ -1,10 +1,9 @@
-"use client";
+import React from "react";
+import getProducts from "@/actions/get-products";
 
-import { Banner } from "@/components/banner";
 import { Button } from "@/components/button";
 import { Feature } from "@/components/feature";
-import { FeatureProductCard } from "@/components/feature-product-card";
-import { FeatureProducts } from "@/components/feature-products";
+import { ProductsList } from "@/components/feature-products";
 
 import { Header } from "@/components/header";
 
@@ -12,35 +11,13 @@ import { Information } from "@/components/information";
 import { InformationCard } from "@/components/information-card";
 
 import { Newsletter } from "@/components/newsletter";
-import { useProducts } from "@/hook/useProducts";
-import { CategoriesType } from "@/mock/product";
-import { useRouter } from "next/navigation";
-import React from "react";
 
-export default function Home() {
-  const router = useRouter();
+export const revalidate = 0;
 
-  const products = useProducts();
-  const productsFeatured = products && products["productsFeatured"];
+const Home = async () => {
+  const newProducts = await getProducts({ isFeatured: true });
 
-  const productsArrivals = products && products["productsArrivals"];
-
-  const categories: CategoriesType[] = [
-    {
-      name: "featured",
-      products: productsFeatured || [],
-      title: "New Featured",
-      subtitle: "Summer Collection New Modern Design",
-    },
-    {
-      name: "arrivals",
-      products: productsArrivals || [],
-      title: "New Arrivals",
-      subtitle: "Summer Collection New Modern Design",
-    },
-  ];
-
-  console.log(categories);
+  console.log(newProducts);
 
   return (
     <div>
@@ -56,63 +33,40 @@ export default function Home() {
 
       <Feature />
 
-      {categories.map((category, index) => (
-        <React.Fragment key={category.name}>
-          <FeatureProducts title={category.title} subtitle={category.subtitle}>
-            {category.products.map((product) => (
-              <FeatureProductCard
-                key={product.id}
-                src={product.src}
-                brand={product.brand}
-                name={product.name}
-                price={product.price}
-                onclick={() => router.push(`/shop/product/${product.id}`)}
-              />
-            ))}
-          </FeatureProducts>
-          {index === 0 && <Banner />}
-        </React.Fragment>
-      ))}
+      <ProductsList title="Featured Products" items={newProducts} />
 
       <Information className="justify-center gap-x-3 gap-y-3">
-        <InformationCard
-          title="crazy deals"
-          subtitle="buy 1 get 1 free"
-          description="The best classic dress is on sale at Less"
-        >
+        <InformationCard billboardId="e8ab7704-be6a-4a79-9fb9-e0adf1021a1d">
           <Button label="Learn more" banner />
         </InformationCard>
-        <InformationCard
-          title="spring/summer"
-          subtitle="upcoming season "
-          description="The best classic dress is on sale at Less"
-          className="bg-[url('/images/banner/b10.jpg')]"
-        >
+        <InformationCard billboardId="e8ab7704-be6a-4a79-9fb9-e0adf1021a1d">
           <Button label="Collection" banner />
         </InformationCard>
       </Information>
 
       <Information className="py-0">
         <InformationCard
-          subtitle="SEASONAL SALE "
+          billboardId="e8ab7704-be6a-4a79-9fb9-e0adf1021a1d"
           sell="Winter Collection -50% OFF"
           small
-          className="bg-[url('/images/banner/b7.jpg')] min-w-[30%] h-[30vh] p-5 mb-5"
+          className=" min-w-[30%] h-[30vh] p-5 mb-5"
         />
         <InformationCard
-          subtitle="SEASONAL SALE "
+          billboardId="5c80d9e4-9192-4a41-82a5-924f2b34414e"
           sell="Winter Collection -50% OFF"
           small
-          className="bg-[url('/images/banner/b4.jpg')] min-w-[30%] h-[30vh] p-5 mb-5"
+          className=" min-w-[30%] h-[30vh] p-5 mb-5"
         />
         <InformationCard
-          subtitle="SEASONAL SALE "
+          billboardId="e8ab7704-be6a-4a79-9fb9-e0adf1021a1d"
           sell="Winter Collection -50% OFF"
           small
-          className="bg-[url('/images/banner/b18.jpg')] min-w-[30%] h-[30vh] p-5 mb-5"
+          className=" min-w-[30%] h-[30vh] p-5 mb-5"
         />
       </Information>
       <Newsletter />
     </div>
   );
-}
+};
+
+export default Home;

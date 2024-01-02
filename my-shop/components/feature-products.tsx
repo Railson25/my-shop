@@ -1,24 +1,22 @@
 "use client";
 
-interface FeatureProductsProps {
-  title?: string;
-  subtitle?: string;
-  children: React.ReactNode;
+import { Product } from "@/types/types";
+import { ProductCard } from "./feature-product-card";
+
+interface ProductsListProps {
+  title: string;
+  items: Product[];
 }
 
-export const FeatureProducts = ({
-  title,
-  subtitle,
-  children,
-}: FeatureProductsProps) => {
+export const ProductsList = ({ title, items }: ProductsListProps) => {
   return (
     <div className="py-10 px-20 text-center bg-white max-[477px]:p-[20px]">
-      {title && <h1>{title}</h1>}
-
-      {subtitle && <p>{subtitle}</p>}
+      <h1>{title}</h1>
 
       <div className="flex justify-between pt-5 flex-wrap max-md:justify-center max-md:gap-x-[15px]">
-        {children}
+        {items.map((item) => (
+          <ProductCard key={item.id} data={item} />
+        ))}
       </div>
     </div>
   );

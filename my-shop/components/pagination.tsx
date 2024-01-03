@@ -1,25 +1,39 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Product } from "@/types/types";
 
-import { FeatureProductCard } from "./feature-product-card";
+import { ProductCard } from "./feature-product-card";
 
-import { FeatureProducts } from "./feature-products";
+import { ProductsList } from "./feature-products";
 import { ButtonsPagination } from "./buttons-pagination";
 import { usePagination } from "@/hook/usePagination";
-import { useRouter } from "next/navigation";
-import { useProducts } from "@/hook/useProducts";
 
-// const products = categories.reduce<Product[]>((prevProducts, category) => {
-//   return [...prevProducts, ...category.products];
-// }, []);
+import getProducts from "@/actions/get-products";
+import { useRouter } from "next/navigation";
 
 export const Pagination: React.FC = () => {
-  const products = useProducts();
-  const productsFeatured = products && products["productsFeatured"];
+  const [newProducts, setNewProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const productsArrivals = products && products["productsArrivals"];
-  const combinedArray = (productsFeatured || []).concat(productsArrivals || []);
+  const router = useRouter();
+
+  console.log(newProducts);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const products = await getProducts({ isFeatured: true });
+
+        setNewProducts(products);
+        setLoading(false);
+      } catch (error) {
+        console.log("Erro ao buscar produtos", error);
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   const {
     currentData,
@@ -30,24 +44,24 @@ export const Pagination: React.FC = () => {
     maxPage,
     goToInitialPage,
     goToLastPage,
-  } = usePagination(combinedArray, 8);
+  } = usePagination(newProducts, 8);
 
-  const router = useRouter();
+  if (loading) {
+    <div className="animate-spin p-5">CARREGABDOOOOOOOOOOOO</div>;
+    console.log("aquuuuuuuuuuuuuuuuuuui");
+  }
 
   return (
     <>
-      <FeatureProducts>
+      <ProductsList items={newProducts}>
         {currentData().map((product) => (
-          <FeatureProductCard
+          <ProductCard
             key={product.id}
-            src={product.src}
-            brand={product.brand}
-            name={product.name}
-            price={product.price}
+            data={product}
             onclick={() => router.push(`/shop/product/${product.id}`)}
           />
         ))}
-      </FeatureProducts>
+      </ProductsList>
       <ButtonsPagination
         onNext={nextPage}
         onPrev={backPage}

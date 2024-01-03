@@ -21,6 +21,7 @@ export interface Billboard {
   imageUrl: string;
   subtitle: string;
   descriptionSeason: string;
+  paragraph: string;
 }
 
 export interface Image {

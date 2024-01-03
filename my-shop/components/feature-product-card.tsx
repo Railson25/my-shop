@@ -10,12 +10,13 @@ import { formatter } from "@/lib/utils";
 
 interface ProductCardProps {
   data: Product;
+  onclick?: () => void;
 }
 
-export const ProductCard = ({ data }: ProductCardProps) => {
+export const ProductCard = ({ data, onclick }: ProductCardProps) => {
   return (
     <div
-      onClick={() => {}}
+      onClick={onclick}
       className="w-[23%] min-w-[250px] py-[10px] px-3 border border-[#cce7d0] rounded-[25px] cursor-pointer shadow-xl mx-0 my-[15px] hover:shadow-2xl transition relative "
     >
       <Image
@@ -23,7 +24,7 @@ export const ProductCard = ({ data }: ProductCardProps) => {
         src={data?.images?.[0]?.url}
         width={1000}
         height={1}
-        className="w-full rounded-[20px]"
+        className="w-full rounded-[20px] h-[300px] object-cover"
       />
       <div className="text-start py-[10px] px-0">
         <span className="text-[#606063] text-xs">{data.category.name}</span>

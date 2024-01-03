@@ -6,11 +6,10 @@ const Contact = () => {
   return (
     <div>
       <Header
-        subtitle="#let's_talk"
-        paragraph="LEAVE A MESSAGE, We love to hear from you"
+        billboardId="d810a1b1-e4da-45ad-96cf-ecd7f979ad71"
         h2Style="font-bold text-white"
         pStyle="text-white"
-        className="bg-[url('/images/about/banner.png')]  h-[40vh] items-center p-[14px] "
+        className="h-[40vh] items-center p-[14px] "
       />
       <ContactContent />
       <Newsletter />

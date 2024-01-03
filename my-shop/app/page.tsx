@@ -22,10 +22,7 @@ const Home = async () => {
   return (
     <div>
       <Header
-        title="Trade-in-offer"
-        subtitle="Super value deals"
-        description="On all products"
-        paragraph="Save more with coupons $ up to 70% off!"
+        billboardId="932969b0-d5ed-459b-a88b-6ed1279f81e8"
         textButton="Shop Now"
         isHeader
         hasButton
@@ -39,27 +36,27 @@ const Home = async () => {
         <InformationCard billboardId="e8ab7704-be6a-4a79-9fb9-e0adf1021a1d">
           <Button label="Learn more" banner />
         </InformationCard>
-        <InformationCard billboardId="e8ab7704-be6a-4a79-9fb9-e0adf1021a1d">
+        <InformationCard billboardId="5c80d9e4-9192-4a41-82a5-924f2b34414e">
           <Button label="Collection" banner />
         </InformationCard>
       </Information>
 
       <Information className="py-0">
         <InformationCard
-          billboardId="e8ab7704-be6a-4a79-9fb9-e0adf1021a1d"
+          billboardId="66ba852f-80e1-4bd3-9666-920d42c187c1"
           sell="Winter Collection -50% OFF"
           small
           className=" min-w-[30%] h-[30vh] p-5 mb-5"
         />
         <InformationCard
-          billboardId="5c80d9e4-9192-4a41-82a5-924f2b34414e"
-          sell="Winter Collection -50% OFF"
+          billboardId="f1a15ccc-1560-4a1b-906c-f7303a268139"
+          sell="Spring/Summer 2022"
           small
           className=" min-w-[30%] h-[30vh] p-5 mb-5"
         />
         <InformationCard
-          billboardId="e8ab7704-be6a-4a79-9fb9-e0adf1021a1d"
-          sell="Winter Collection -50% OFF"
+          billboardId="6a74a1e7-19d1-4940-b64d-0ca9d86876ad"
+          sell="New Trendy Prints"
           small
           className=" min-w-[30%] h-[30vh] p-5 mb-5"
         />

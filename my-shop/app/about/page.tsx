@@ -8,11 +8,10 @@ const About = () => {
   return (
     <div>
       <Header
-        subtitle="#KnowUs"
-        paragraph="Lorem ipsum dolor sit amet, consectetur"
+        billboardId="4ae06d21-91c0-49a1-850b-0a0bde426fa3"
         h2Style="font-bold text-white"
         pStyle="text-white"
-        className="bg-[url('/images/about/banner.png')]  h-[40vh] items-center p-[14px] "
+        className="h-[40vh] items-center p-[14px] "
       />
 
       <AboutContent />

@@ -5,11 +5,10 @@ const Cart = () => {
   return (
     <div>
       <Header
-        subtitle="#cart"
-        paragraph="Add your coupon code $ SAVE upto 70%"
+        billboardId="5d9acfe5-9b95-465e-b2a6-4294a4f69b09"
         h2Style="font-bold text-white"
         pStyle="text-white"
-        className="bg-[url('/images/about/banner.png')]  h-[40vh] items-center p-[14px] "
+        className="h-[40vh] items-center p-[14px] "
       />
 
       <CartContent />

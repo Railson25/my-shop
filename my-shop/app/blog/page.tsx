@@ -8,11 +8,10 @@ const Blog = () => {
   return (
     <div>
       <Header
-        subtitle="#readmore"
-        paragraph="Real all case studies our products"
+        billboardId="b4ae5ee7-a248-41b0-92e4-25ec43cc4f20"
         h2Style="font-bold text-white"
         pStyle="text-white"
-        className="bg-[url('/images/banner/b19.jpg')]  h-[40vh] items-center p-[14px] "
+        className="h-[40vh] items-center p-[14px] "
       />
 
       <BlogContent />

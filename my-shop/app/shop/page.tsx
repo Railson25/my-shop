@@ -7,11 +7,10 @@ const Shop = () => {
   return (
     <div>
       <Header
-        subtitle="#stayhome"
-        paragraph="Save more with coupon & up to 70% off"
+        billboardId="620b3a33-aaa9-4ddc-b2c0-fa64fa4b16aa"
         h2Style="font-bold text-white"
         pStyle="text-white"
-        className="bg-[url('/images/banner/b1.jpg')]  h-[40vh] items-center p-[14px] "
+        className=" h-[40vh] items-center p-[14px] "
       />
 
       <Pagination />

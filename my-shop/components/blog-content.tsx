@@ -2,11 +2,33 @@
 
 import Image from "next/image";
 import { LinkItem } from "./link";
-import { blogItems } from "@/mock/block";
+
 import { usePagination } from "@/hook/usePagination";
 import { ButtonsPagination } from "./buttons-pagination";
 
+import getBlogs from "@/actions/get-blogs";
+import { useEffect, useState } from "react";
+import { Blog } from "@/types/types";
+
 export const BlogContent = () => {
+  const [newBlogs, setNewBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const blogs = await getBlogs();
+
+        setNewBlogs(blogs);
+        setLoading(false);
+      } catch (error) {
+        console.log("Erro ao buscar blogs", error);
+        setLoading(false);
+      }
+    };
+    fetchBlogs();
+  }, []);
+
   const {
     currentData,
     nextPage,
@@ -16,19 +38,19 @@ export const BlogContent = () => {
     maxPage,
     goToInitialPage,
     goToLastPage,
-  } = usePagination(blogItems, 4);
+  } = usePagination(newBlogs, 4);
 
   return (
     <div className="px-[150px] pt-[150px] flex flex-col gap-y-[90px] max-md:px-5 max-[477px]:pt-[100px] ">
-      {currentData().map((blog: any, index: any) => (
+      {currentData().map((blog: Blog) => (
         <div
-          key={index}
+          key={blog.id}
           className="flex items-center w-full relative max-[477px]:flex-col max-[477px]:items-start"
         >
           <div className="w-[50%] mr-10 z-10 max-[477px]:w-full max-[477px]:mr-0 max-[477px]:mb-7">
             <Image
               alt="Image"
-              src={blog.src}
+              src={blog.imageUrl}
               width={1024}
               height={720}
               className="w-full h-[300px] object-cover"

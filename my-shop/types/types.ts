@@ -24,6 +24,14 @@ export interface Billboard {
   paragraph: string;
 }
 
+export interface Blog {
+  id: string;
+  title: string;
+  imageUrl: string;
+  date: string;
+  description: string;
+}
+
 export interface Image {
   id: string;
   url: string;

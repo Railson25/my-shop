@@ -9,6 +9,7 @@ interface Query {
   colorId?: string;
   sizeId?: string;
   isFeatured?: boolean;
+  isArrival?: boolean;
 }
 const getProducts = async (query: Query): Promise<Product[]> => {
   const url = qs.stringifyUrl({
@@ -18,6 +19,7 @@ const getProducts = async (query: Query): Promise<Product[]> => {
       categoryId: query.categoryId,
       sizeId: query.sizeId,
       isFeatured: query.isFeatured,
+      isArrival: query.isArrival,
     },
   });
   const res = await fetch(url);

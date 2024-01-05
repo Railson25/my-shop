@@ -11,13 +11,13 @@ import { Information } from "@/components/information";
 import { InformationCard } from "@/components/information-card";
 
 import { Newsletter } from "@/components/newsletter";
+import { Banner } from "@/components/banner";
 
 export const revalidate = 0;
 
 const Home = async () => {
-  const newProducts = await getProducts({ isFeatured: true });
-
-  console.log(newProducts);
+  const featuredProducts = await getProducts({ isFeatured: true });
+  const arrivalsProducts = await getProducts({ isArrival: true });
 
   return (
     <div>
@@ -30,7 +30,11 @@ const Home = async () => {
 
       <Feature />
 
-      <ProductsList title="Featured Products" items={newProducts} />
+      <ProductsList title="Featured Products" items={featuredProducts} />
+
+      <Banner />
+
+      <ProductsList title="Arrival Products" items={arrivalsProducts} />
 
       <Information className="justify-center gap-x-3 gap-y-3">
         <InformationCard billboardId="e8ab7704-be6a-4a79-9fb9-e0adf1021a1d">

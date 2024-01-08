@@ -6,33 +6,47 @@ import { Button } from "./button";
 
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/cart-context";
-import { useProducts } from "@/hook/useProducts";
+
+import getProducts from "@/actions/get-products";
+import { Image as ImageType, Product } from "@/types/types";
 
 export const ProductDetails = (props: { id: string }) => {
-  const products = useProducts();
-  const productsFeatured = products && products["productsFeatured"];
+  const [newProducts, setNewProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const productsArrivals = products && products["productsArrivals"];
-  const combinedArray = (productsFeatured || []).concat(productsArrivals || []);
   const [mainImage, setMainImage] = useState<string>("");
 
   const [load, setLoad] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
-  const handleChangeMainImage = (newImage: string) => {
-    setMainImage(newImage);
-  };
-
   const router = useRouter();
 
-  // const products = categories.reduce<Product[]>((prevProducts, category) => {
-  //   return [...prevProducts, ...category.products];
-  // }, []);
-  const data = combinedArray.find((product) => product.id === props.id);
+  const data = newProducts.find((product) => product.id === props.id);
+
+  const handleChangeMainImage = (images: ImageType) => {
+    setMainImage(images.url);
+  };
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const products = await getProducts({ isFeatured: true });
+
+        setNewProducts(products);
+        setLoading(false);
+      } catch (error) {
+        console.log("Erro ao buscar produtos", error);
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
   const { addProductsToCart } = useCart();
   useEffect(() => {
     if (data) {
-      setMainImage(data?.src);
+      const singleImage: ImageType = data.images[0];
+      setMainImage(singleImage.url);
       setLoad(true);
     }
   }, [data]);
@@ -48,6 +62,7 @@ export const ProductDetails = (props: { id: string }) => {
   function handleQuantity(ev: any) {
     let value = ev.target.value;
 
+    // {TODO: CRIAR UM CAMPO DE QUANTIDADE E/OU MELHORAR ESSA LOGICA }
     if (data && data.quantity !== undefined) {
       if (value >= data.quantity) {
         setQuantity(data.quantity);
@@ -74,15 +89,15 @@ export const ProductDetails = (props: { id: string }) => {
         <Image alt="Product Image" src={mainImage} width={1024} height={720} />
 
         <div className="flex justify-between pt-2">
-          {data?.colors?.slice(0, 4).map((images: any, index) => (
+          {data?.images?.slice(0, 4).map((images: ImageType) => (
             <div
-              key={index}
+              key={images.id}
               className="flex basis-[24%] cursor-pointer"
               onClick={() => handleChangeMainImage(images)}
             >
               <Image
                 alt="Product Image"
-                src={images}
+                src={images.url}
                 width={1024}
                 height={720}
                 className="basis-[24%]"
@@ -99,11 +114,11 @@ export const ProductDetails = (props: { id: string }) => {
 
         <select className="block py-[5px] px-[10px] mb-[10px]">
           <option>Select Size</option>
-          {data?.sizes?.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
+          {data?.size && (
+            <option key={data.size.id} value={data.size.value}>
+              {data.size.name}
             </option>
-          ))}
+          )}
         </select>
 
         <input
@@ -118,7 +133,7 @@ export const ProductDetails = (props: { id: string }) => {
           className="bg-[#088178] text-white hover:bg-white hover:text-[#088178] border border-solid hover:border-[#088178]"
         />
         <h4 className="pt-10 pb-5 font-bold">Product Details</h4>
-        <span className="leading-[25px]">{data?.description}</span>
+        <span className="leading-[25px]">{data?.category.name}</span>
       </div>
     </div>
   );

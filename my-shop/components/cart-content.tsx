@@ -4,27 +4,40 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { CiCircleRemove } from "react-icons/ci";
 import { Button } from "./button";
-import { Product, categories } from "@/mock/product";
 
 import { useCart } from "@/context/cart-context";
-
-const products = categories.reduce<Product[]>((prevProducts, category) => {
-  return [...prevProducts, ...category.products];
-}, []);
+import getProducts from "@/actions/get-products";
+import { Product } from "@/types/types";
 
 const CartContent = () => {
-  const data = products.find((product) => product === product);
+  const [newProducts, setNewProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const [foundProducts, setFoundProducts] = useState<Product[]>([]);
   const [cartData, setCartData] = useState<{ id: string; quantity: number }[]>(
     []
   );
 
+  const data = newProducts.find((product) => product === product);
   const [quantity, setQuantity] = useState<number>(1);
-
-  console.log(quantity);
-
   const { removeProductsToCart, productCart } = useCart();
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const products = await getProducts({
+          isFeatured: true,
+        });
+
+        setNewProducts(products);
+        setLoading(false);
+      } catch (error) {
+        console.log("Erro ao buscar produtos", error);
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   useEffect(() => {
     const foundProductsArray = [];
@@ -35,7 +48,7 @@ const CartContent = () => {
       setCartData(parsedCart);
 
       for (const cartItem of parsedCart) {
-        const foundProduct = products.find(
+        const foundProduct = newProducts.find(
           (product) => product.id === cartItem.id
         );
 
@@ -48,7 +61,7 @@ const CartContent = () => {
 
       setFoundProducts(foundProductsArray);
     }
-  }, [productCart]);
+  }, [newProducts]);
 
   function handleQuantity(
     ev: React.ChangeEvent<HTMLInputElement>,
@@ -57,7 +70,9 @@ const CartContent = () => {
     const newQuantity = parseInt(ev.target.value, 10);
 
     if (!isNaN(newQuantity) && newQuantity >= 1) {
-      const productData = products.find((product) => product.id === productId);
+      const productData = newProducts.find(
+        (product) => product.id === productId
+      );
 
       if (productData) {
         const maxQuantity = productData.quantity || 1;
@@ -77,7 +92,7 @@ const CartContent = () => {
   }
 
   function calculateTotalPrice(productId: string) {
-    const product = foundProducts.find((p) => p.id === productId);
+    const product = newProducts.find((p) => p.id === productId);
 
     if (!product) {
       return 0;
@@ -91,7 +106,7 @@ const CartContent = () => {
     return parseFloat(product.price) * Math.min(productQuantity, maxQuantity);
   }
 
-  const itemTotalPrices = foundProducts.map((product) => ({
+  const itemTotalPrices = newProducts.map((product) => ({
     id: product.id,
     totalPrice: calculateTotalPrice(product.id),
   }));
@@ -127,7 +142,7 @@ const CartContent = () => {
         </li>
         <li className="flex w-full lg:justify-center">
           <ul className="flex flex-col gap-y-5">
-            {foundProducts.map((product) => (
+            {newProducts.map((product) => (
               <li className="flex w-full" key={product.id}>
                 <Button
                   onClick={() => removeProductsToCart(product.id)}
@@ -137,7 +152,7 @@ const CartContent = () => {
                 <div className="min-w-[150px] text-center justify-center flex">
                   <Image
                     alt="Image"
-                    src={product.src}
+                    src={product.images}
                     width={1024}
                     height={720}
                     className="w-[70px]"

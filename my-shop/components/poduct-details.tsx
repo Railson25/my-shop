@@ -23,6 +23,8 @@ export const ProductDetails = (props: { id: string }) => {
 
   const data = newProducts.find((product) => product.id === props.id);
 
+  console.log(data);
+
   const handleChangeMainImage = (images: ImageType) => {
     setMainImage(images.url);
   };
@@ -63,22 +65,22 @@ export const ProductDetails = (props: { id: string }) => {
     let value = ev.target.value;
 
     // {TODO: CRIAR UM CAMPO DE QUANTIDADE E/OU MELHORAR ESSA LOGICA }
-    if (data && data.quantity !== undefined) {
-      if (value >= data.quantity) {
-        setQuantity(data.quantity);
-      } else if (value <= 0) {
-        setQuantity(1);
-      } else {
-        setQuantity(value);
-      }
-      console.log(ev.target.value);
-    }
+    // if (data && data.quantity !== undefined) {
+    //   if (value >= data.quantity) {
+    //     setQuantity(data.quantity);
+    //   } else if (value <= 0) {
+    //     setQuantity(1);
+    //   } else {
+    //     setQuantity(value);
+    //   }
+    //   console.log(ev.target.value);
+    // }
   }
 
   function goTocart() {
     if (data?.id) {
-      addProductsToCart(data.id, quantity);
-      console.log(quantity);
+      addProductsToCart(data.id);
+      console.log(data.id);
     }
     router.push("/cart");
   }
@@ -133,7 +135,7 @@ export const ProductDetails = (props: { id: string }) => {
           className="bg-[#088178] text-white hover:bg-white hover:text-[#088178] border border-solid hover:border-[#088178]"
         />
         <h4 className="pt-10 pb-5 font-bold">Product Details</h4>
-        <span className="leading-[25px]">{data?.category.name}</span>
+        <span className="leading-[25px]">{data?.description}</span>
       </div>
     </div>
   );
